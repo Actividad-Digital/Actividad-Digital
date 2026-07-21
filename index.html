@@ -52,7 +52,33 @@
     background:var(--red);color:#fff;padding:.55rem 1.15rem;border-radius:100px;
     font-weight:600;font-size:.85rem;text-decoration:none;
   }
-  @media(max-width:760px){ nav ul{display:none;} }
+  .burger{
+    display:none;flex-direction:column;gap:5px;background:none;border:none;
+    cursor:pointer;padding:.4rem;z-index:60;
+  }
+  .burger span{width:24px;height:2px;background:var(--paper);border-radius:2px;transition:all .25s ease;}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:760px){
+    nav ul{
+      display:flex;flex-direction:column;gap:0;
+      position:fixed;top:0;right:0;height:100vh;width:min(72vw,300px);
+      background:#141414;padding:6rem 2rem 2rem;
+      transform:translateX(100%);transition:transform .3s ease;
+      box-shadow:-10px 0 30px rgba(0,0,0,.4);
+    }
+    nav ul.open{transform:translateX(0);}
+    nav ul li{border-bottom:1px solid rgba(255,255,255,.08);}
+    nav ul li a{display:block;padding:1.1rem 0;opacity:1;font-size:1.05rem;}
+    .burger{display:flex;}
+    .nav-cta{display:none;}
+    nav ul li:last-child{border-bottom:none;margin-top:1rem;}
+  }
+  .menu-overlay{
+    display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45;
+  }
+  .menu-overlay.open{display:block;}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -175,13 +201,18 @@
     <svg class="brand-mark" viewBox="0 0 100 100"><path d="M50 15 C30 15 15 35 15 50" stroke="#F3B900" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 25 C35 25 25 40 25 55" stroke="#233E9C" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 35 C42 35 35 45 35 60" stroke="#DF3027" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
     Actividad Digital
   </div>
-  <ul>
+  <ul id="navMenu">
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
     <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/5491150609025?text=Hola!%20vi%20tu%20portfolio%20y%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank" style="color:var(--yellow);font-weight:600;">Escribime por WhatsApp →</a></li>
   </ul>
   <a class="nav-cta" href="https://wa.me/5491150609025?text=Hola!%20vi%20tu%20portfolio%20y%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank">Escribime</a>
+  <button class="burger" id="burgerBtn" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="menu-overlay" id="menuOverlay"></div>
 
 <section class="hero">
   <svg class="fingerprint" viewBox="0 0 400 400" fill="none">
@@ -326,6 +357,23 @@
 </a>
 
 <script>
+  const burger = document.getElementById('burgerBtn');
+  const navMenu = document.getElementById('navMenu');
+  const overlay = document.getElementById('menuOverlay');
+
+  function toggleMenu(){
+    burger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+  burger.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+  navMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if(navMenu.classList.contains('open')) toggleMenu();
+    });
+  });
+
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.card');
   buttons.forEach(btn=>{
@@ -339,6 +387,10 @@
     });
   });
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
