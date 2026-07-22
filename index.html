@@ -49,9 +49,10 @@
   nav a{color:var(--paper);text-decoration:none;opacity:.75;transition:opacity .2s;}
   nav a:hover{opacity:1;}
   .nav-cta{
-    background:var(--red);color:#fff;padding:.55rem 1.15rem;border-radius:100px;
-    font-weight:600;font-size:.85rem;text-decoration:none;
+    background:#141414;color:#fff;padding:.55rem 1.15rem;border-radius:100px;
+    font-weight:600;font-size:.85rem;text-decoration:none;transition:background .25s;
   }
+  .nav-cta:hover{background:#25D366;}
   .burger{
     display:none;flex-direction:column;gap:5px;background:none;border:none;
     cursor:pointer;padding:.4rem;z-index:60;
@@ -74,7 +75,29 @@
     .burger{display:flex;}
     .nav-cta{display:none;}
     nav ul li:last-child{border-bottom:none;margin-top:1rem;}
+    .has-sub{border-bottom:none !important;}
+    .sub-toggle{
+      width:100%;text-align:left;background:none;border:none;color:var(--paper);
+      font-family:'Work Sans',sans-serif;font-size:1.05rem;padding:1.1rem 0;
+      display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .chev{transition:transform .25s;font-size:.8rem;color:var(--yellow);}
+    .sub-toggle.open .chev{transform:rotate(180deg);}
+    .submenu{
+      list-style:none;max-height:0;overflow:hidden;transition:max-height .3s ease;
+      padding-left:1rem;
+    }
+    .submenu.open{max-height:400px;}
+    .submenu li{border-bottom:none !important;}
+    .submenu li a{padding:.7rem 0 !important;font-size:.92rem;opacity:.8;}
   }
+  .wa-menu-btn{
+    display:inline-block;background:#141414;color:#fff !important;opacity:1 !important;
+    padding:.7rem 1.2rem;border-radius:100px;font-size:.9rem !important;font-weight:600;
+    text-align:center;transition:background .25s;
+  }
+  .wa-menu-btn:hover{background:#25D366;}
   .menu-overlay{
     display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45;
   }
@@ -102,7 +125,8 @@
     text-decoration:none;transition:transform .2s ease;
   }
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--red);color:#fff;}
+  .btn-primary{background:#141414;color:#fff;transition:background .25s;}
+  .btn-primary:hover{background:#25D366;}
   .btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--paper);}
 
   .fingerprint{
@@ -116,8 +140,27 @@
   .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap;}
   .section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
 
-  /* ---------- FILTERS ---------- */
-  .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+  /* ---------- FILTERS / CATEGORY WINDOWS ---------- */
+  .cat-windows{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;margin-bottom:3rem;}
+  @media(max-width:900px){.cat-windows{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:600px){.cat-windows{grid-template-columns:repeat(2,1fr);}}
+  .cat-window{
+    position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1/1;
+    border:2px solid transparent;background:var(--card);cursor:pointer;padding:0;
+  }
+  .cat-window img{width:100%;height:100%;object-fit:cover;display:block;opacity:.75;transition:opacity .25s,transform .4s;}
+  .cat-window:hover img{opacity:.95;transform:scale(1.05);}
+  .cat-window.active{border-color:var(--yellow);}
+  .cat-window.active img{opacity:1;}
+  .cat-window .cw-label{
+    position:absolute;inset:0;display:flex;align-items:flex-end;padding:.8rem;
+    background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);
+    color:var(--paper);font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;text-align:left;
+  }
+  .cat-window.empty{display:flex;align-items:center;justify-content:center;background:var(--card);}
+  .cat-window.empty .cw-label{position:static;background:none;padding:0;text-align:center;font-size:.85rem;color:var(--muted);}
+  .results-label{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.4rem;}
+  .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;}
   .filter-btn{
     font-family:'Space Mono',monospace;font-size:.78rem;
     padding:.5rem 1rem;border-radius:100px;border:1px solid rgba(255,255,255,.18);
@@ -176,7 +219,7 @@
   }
   .contact h2{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:1rem;}
   .contact p{color:#5a5a5a;max-width:460px;margin:0 auto 2rem;}
-  .contact .btn-primary{background:var(--ink);}
+  .contact .btn-primary:hover{background:#25D366;}
 
   footer{
     display:flex;justify-content:space-between;align-items:center;
@@ -202,10 +245,19 @@
     Actividad Digital
   </div>
   <ul id="navMenu">
-    <li><a href="#portfolio">Portfolio</a></li>
+    <li class="has-sub">
+      <button class="sub-toggle" id="portfolioToggle">Portfolio <span class="chev">▾</span></button>
+      <ul class="submenu" id="portfolioSubmenu">
+        <li><a href="#portfolio" data-filter="logos">Logos</a></li>
+        <li><a href="#portfolio" data-filter="flyers">Flyers</a></li>
+        <li><a href="#portfolio" data-filter="etiquetas">Etiquetas</a></li>
+        <li><a href="#portfolio" data-filter="mockups">Mockups</a></li>
+        <li><a href="#portfolio" data-filter="identidad">Identidad de marca</a></li>
+      </ul>
+    </li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
     <li><a href="#contacto">Contacto</a></li>
-    <li><a href="https://wa.me/5491150609025?text=Hola!%20vi%20tu%20portfolio%20y%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank" style="color:var(--yellow);font-weight:600;">Escribime por WhatsApp →</a></li>
+    <li><a class="wa-menu-btn" href="https://wa.me/5491150609025?text=Hola!%20vi%20tu%20portfolio%20y%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank">Escribime por WhatsApp →</a></li>
   </ul>
   <a class="nav-cta" href="https://wa.me/5491150609025?text=Hola!%20vi%20tu%20portfolio%20y%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank">Escribime</a>
   <button class="burger" id="burgerBtn" aria-label="Abrir menú">
@@ -245,12 +297,37 @@
     </div>
   </div>
 
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">Todos</button>
-    <button class="filter-btn" data-filter="logos">Logotipos</button>
+  <div class="filters" id="filterLinks">
+    <button class="filter-btn" data-filter="logos">Logos</button>
+    <button class="filter-btn" data-filter="flyers">Flyers</button>
     <button class="filter-btn" data-filter="etiquetas">Etiquetas</button>
-    <button class="filter-btn" data-filter="social">Identidad de marca</button>
+    <button class="filter-btn" data-filter="mockups">Mockups</button>
+    <button class="filter-btn" data-filter="identidad">Identidad de marca</button>
   </div>
+
+  <div class="cat-windows" id="catWindows">
+    <button class="cat-window" data-filter="logos">
+      <img src="assets/saten-style.jpg" alt="Logos">
+      <span class="cw-label">Logos</span>
+    </button>
+    <button class="cat-window empty" data-filter="flyers">
+      <span class="cw-label">Flyers<br><small style="font-weight:400;">Próximamente</small></span>
+    </button>
+    <button class="cat-window" data-filter="etiquetas">
+      <img src="assets/dfrancesco.jpg" alt="Etiquetas">
+      <span class="cw-label">Etiquetas</span>
+    </button>
+    <button class="cat-window" data-filter="mockups">
+      <img src="assets/rachel-sakti-bolsa.jpg" alt="Mockups">
+      <span class="cw-label">Mockups</span>
+    </button>
+    <button class="cat-window" data-filter="identidad">
+      <img src="assets/sweet-lotus.jpg" alt="Identidad de marca">
+      <span class="cw-label">Identidad de marca</span>
+    </button>
+  </div>
+
+  <p class="results-label" id="resultsLabel">Muestras</p>
 
   <div class="grid" id="grid">
     <!-- CARD TEMPLATE: reemplazá el <div class="ph">...</div> por
@@ -263,11 +340,11 @@
       <img src="assets/style-printed.jpg" alt="Logotipo Style Printed" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Style%20Printed" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="social">
+    <div class="card" data-cat="identidad">
       <img src="assets/sweet-lotus.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sweet%20Lotus" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="etiquetas">
+    <div class="card" data-cat="mockups">
       <img src="assets/mjo-accesorios.jpg" alt="Logotipo y etiquetas MJO Accesorios" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20MJO%20Accesorios" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
@@ -287,7 +364,7 @@
       <img src="assets/amapola.jpg" alt="Logotipo Amapola" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Amapola" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="social">
+    <div class="card" data-cat="identidad">
       <img src="assets/rachel-sakti.jpg" alt="Identidad de marca Rachel & Sakti" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Rachel%20%26%20Sakti" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
@@ -295,11 +372,11 @@
       <img src="assets/lm-studio.jpg" alt="Logotipo LM Studio cejas y pestañas" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20LM%20Studio" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="social">
+    <div class="card" data-cat="mockups">
       <img src="assets/amapola-mockup.jpg" alt="Marca Amapola aplicada en producto" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Amapola" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="social">
+    <div class="card" data-cat="mockups">
       <img src="assets/rachel-sakti-bolsa.jpg" alt="Marca Rachel & Sakti aplicada en bolsa" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Rachel%20%26%20Sakti" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
@@ -311,11 +388,11 @@
       <img src="assets/sei-muebles.jpg" alt="Logotipo SEI Muebles" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20SEI%20Muebles" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="etiquetas">
+    <div class="card" data-cat="mockups">
       <img src="assets/saten-style-caja.jpg" alt="Marca Satén Style aplicada en caja" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sat%C3%A9n%20Style" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
-    <div class="card" data-cat="social">
+    <div class="card" data-cat="mockups">
       <img src="assets/oscar-gorra.jpg" alt="Marca Oscar Electricista aplicada en gorra" loading="lazy">
       <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Oscar%20Electricista" target="_blank">Consultar por WhatsApp →</a></div>
     </div>
@@ -374,16 +451,65 @@
     });
   });
 
-  const buttons = document.querySelectorAll('.filter-btn');
+  const portfolioToggle = document.getElementById('portfolioToggle');
+  const portfolioSubmenu = document.getElementById('portfolioSubmenu');
+  portfolioToggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    portfolioToggle.classList.toggle('open');
+    portfolioSubmenu.classList.toggle('open');
+  });
+
+  const catWindows = document.querySelectorAll('.cat-window[data-filter]:not(.empty)');
+  const filterLinks = document.querySelectorAll('.filter-btn[data-filter]');
   const cards = document.querySelectorAll('.card');
-  buttons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      buttons.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      cards.forEach(c=>{
-        c.style.display = (f==='all' || c.dataset.cat===f) ? 'block' : 'none';
-      });
+  const resultsLabel = document.getElementById('resultsLabel');
+  const catNames = {logos:'Logos', etiquetas:'Etiquetas', mockups:'Mockups', identidad:'Identidad de marca'};
+
+  function clearActive(){
+    catWindows.forEach(w=>w.classList.remove('active'));
+    filterLinks.forEach(l=>l.classList.remove('active'));
+  }
+  function setActive(filter){
+    catWindows.forEach(w=>{ if(w.dataset.filter===filter) w.classList.add('active'); });
+    filterLinks.forEach(l=>{ if(l.dataset.filter===filter) l.classList.add('active'); });
+  }
+
+  function showSamples(){
+    const all = Array.from(cards);
+    for(let i=all.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [all[i],all[j]] = [all[j],all[i]];
+    }
+    const picks = new Set(all.slice(0,6));
+    cards.forEach(c=>{ c.style.display = picks.has(c) ? 'block' : 'none'; });
+    resultsLabel.textContent = 'Muestras';
+    clearActive();
+  }
+
+  function showCategory(filter){
+    cards.forEach(c=>{ c.style.display = (c.dataset.cat === filter) ? 'block' : 'none'; });
+    resultsLabel.textContent = catNames[filter] || filter;
+    clearActive();
+    setActive(filter);
+  }
+
+  function handleClick(filter, el){
+    const isActive = el.classList.contains('active');
+    if(isActive){ showSamples(); } else { showCategory(filter); }
+  }
+
+  catWindows.forEach(win=>{
+    win.addEventListener('click', ()=> handleClick(win.dataset.filter, win));
+  });
+  filterLinks.forEach(link=>{
+    link.addEventListener('click', ()=> handleClick(link.dataset.filter, link));
+  });
+
+  showSamples();
+
+  document.querySelectorAll('#portfolioSubmenu a[data-filter]').forEach(link=>{
+    link.addEventListener('click', ()=>{
+      showCategory(link.dataset.filter);
     });
   });
 </script>
@@ -391,7 +517,4 @@
 </body>
 </html>
 
-
-</body>
-</html>
 
