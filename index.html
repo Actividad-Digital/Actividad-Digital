@@ -205,6 +205,31 @@
   }
   .about-visual{position:relative;aspect-ratio:1;border-radius:24px;background:var(--card);display:flex;align-items:center;justify-content:center;}
 
+  /* ---------- CLIENTES MARQUEE ---------- */
+  .clientes{padding:5rem 0 6rem;overflow:hidden;}
+  .clientes .section-head{padding:0 6vw;margin-bottom:2.4rem;}
+  .marquee-wrap{
+    position:relative;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%);
+    mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%);
+  }
+  .marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite;}
+  .marquee-track:hover{animation-play-state:paused;}
+  .marquee-item{
+    flex:0 0 auto;width:150px;height:150px;margin:0 1.2rem;border-radius:20px;
+    background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+  }
+  .marquee-item img{width:100%;height:100%;object-fit:contain;padding:1.1rem;filter:grayscale(15%);transition:filter .3s;}
+  .marquee-item:hover img{filter:grayscale(0%);}
+  @keyframes marquee{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media(max-width:600px){
+    .marquee-item{width:110px;height:110px;margin:0 .7rem;}
+  }
+
   /* ---------- CONTACT ---------- */
   .contact{
     background:var(--paper);color:var(--ink);border-radius:28px;
@@ -478,6 +503,46 @@
   </div>
 </section>
 
+<section class="clientes">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Confían en nosotros</p>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">Nuestros clientes</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item"><img src="assets/saten-style.jpg" alt="Satén Style J&J"></div>
+      <div class="marquee-item"><img src="assets/style-printed.jpg" alt="Style Printed"></div>
+      <div class="marquee-item"><img src="assets/sweet-lotus.jpg" alt="Sweet Lotus"></div>
+      <div class="marquee-item"><img src="assets/mjo-logo.jpg" alt="MJO Accesorios"></div>
+      <div class="marquee-item"><img src="assets/dfrancesco.jpg" alt="D'Francesco Pastelería"></div>
+      <div class="marquee-item"><img src="assets/oscar-electricista.jpg" alt="Oscar Electricista"></div>
+      <div class="marquee-item"><img src="assets/angela-cakes.jpg" alt="Angela Cakes & Details"></div>
+      <div class="marquee-item"><img src="assets/amapola.jpg" alt="Amapola"></div>
+      <div class="marquee-item"><img src="assets/rachel-sakti-logo.jpg" alt="Rachel & Sakti"></div>
+      <div class="marquee-item"><img src="assets/lm-studio.jpg" alt="LM Studio"></div>
+      <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh"></div>
+      <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles"></div>
+      <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana"></div>
+      <!-- duplicado para loop continuo -->
+      <div class="marquee-item"><img src="assets/saten-style.jpg" alt="Satén Style J&J"></div>
+      <div class="marquee-item"><img src="assets/style-printed.jpg" alt="Style Printed"></div>
+      <div class="marquee-item"><img src="assets/sweet-lotus.jpg" alt="Sweet Lotus"></div>
+      <div class="marquee-item"><img src="assets/mjo-logo.jpg" alt="MJO Accesorios"></div>
+      <div class="marquee-item"><img src="assets/dfrancesco.jpg" alt="D'Francesco Pastelería"></div>
+      <div class="marquee-item"><img src="assets/oscar-electricista.jpg" alt="Oscar Electricista"></div>
+      <div class="marquee-item"><img src="assets/angela-cakes.jpg" alt="Angela Cakes & Details"></div>
+      <div class="marquee-item"><img src="assets/amapola.jpg" alt="Amapola"></div>
+      <div class="marquee-item"><img src="assets/rachel-sakti-logo.jpg" alt="Rachel & Sakti"></div>
+      <div class="marquee-item"><img src="assets/lm-studio.jpg" alt="LM Studio"></div>
+      <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh"></div>
+      <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles"></div>
+      <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana"></div>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contacto">
   <p class="eyebrow" style="color:var(--red);">¿Tenés un proyecto?</p>
   <h2>Contame qué necesitás</h2>
@@ -577,3 +642,4 @@
 
 </body>
 </html>
+
