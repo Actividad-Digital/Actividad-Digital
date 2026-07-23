@@ -16,6 +16,7 @@
     --red:#DF3027;
     --card:#1E1E1E;
     --muted:#8C8C8C;
+    --banner-h:40px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -35,8 +36,15 @@
   h1,h2,h3{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.05;}
 
   /* ---------- NAV ---------- */
+  .top-banner{
+    position:fixed;top:0;left:0;right:0;z-index:55;height:var(--banner-h);
+    background:linear-gradient(90deg,var(--yellow),var(--red));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.05em;
+    color:#141414;font-weight:700;text-align:center;padding:0 1rem;
+  }
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
+    position:fixed;top:var(--banner-h);left:0;right:0;z-index:50;
     display:flex;align-items:center;justify-content:space-between;
     padding:1.1rem 6vw;
     background:rgba(20,20,20,.72);
@@ -102,7 +110,7 @@
     padding:0 6vw;
     overflow:hidden;
   }
-  .hero-inner{position:relative;z-index:2;max-width:640px;padding-top:4rem;}
+  .hero-inner{position:relative;z-index:2;max-width:640px;padding-top:calc(4rem + var(--banner-h));}
   .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);margin:.7rem 0 1.2rem;}
   .hero h1 span{
     background:linear-gradient(90deg,var(--yellow),var(--red));
@@ -151,6 +159,22 @@
   .cat-window.empty{display:flex;align-items:center;justify-content:center;background:var(--card);}
   .cat-window.empty .cw-label{position:static;background:none;padding:0;text-align:center;font-size:.85rem;color:var(--muted);}
   .results-label{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.4rem;}
+
+  /* ---------- SERVICIOS ---------- */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+  @media(max-width:800px){.services{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--card);border-radius:20px;padding:2.2rem 1.8rem;
+    border:1px solid rgba(255,255,255,.06);transition:transform .3s,border-color .3s;
+  }
+  .service-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);}
+  .service-icon{
+    width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:conic-gradient(from 200deg,var(--yellow),var(--blue),var(--red),var(--yellow));
+    margin-bottom:1.4rem;
+  }
+  .service-card h3{font-family:'Fredoka',sans-serif;font-size:1.25rem;margin-bottom:.6rem;color:var(--paper);}
+  .service-card p{color:#B8B6B0;font-size:.92rem;line-height:1.6;}
   .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;}
   .filter-btn{
     font-family:'Space Mono',monospace;font-size:.78rem;
@@ -239,6 +263,21 @@
   .contact p{color:#5a5a5a;max-width:460px;margin:0 auto 2rem;}
   .contact .btn-primary:hover{background:#25D366;}
 
+  /* ---------- FORMULARIO WHATSAPP ---------- */
+  .quote-form{
+    max-width:440px;margin:2rem auto 1.6rem;text-align:left;
+    display:flex;flex-direction:column;gap:1rem;
+  }
+  .quote-form label{
+    font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;
+    text-transform:uppercase;color:#5a5a5a;margin-bottom:.4rem;display:block;
+  }
+  .quote-form input,.quote-form select{
+    width:100%;padding:.8rem 1rem;border-radius:12px;border:1px solid #d8d5cd;
+    background:#fff;font-family:'Work Sans',sans-serif;font-size:.92rem;color:var(--ink);
+  }
+  .quote-form input:focus,.quote-form select:focus{outline:2px solid var(--blue);}
+
   footer{
     display:flex;justify-content:space-between;align-items:center;
     padding:2rem 6vw 3rem;font-size:.82rem;color:var(--muted);flex-wrap:wrap;gap:1rem;
@@ -257,6 +296,7 @@
 </head>
 <body>
 
+<div class="top-banner">✨ Cada proyecto tiene una huella única ✨</div>
 <nav>
   <div class="brand">
     <svg class="brand-mark" viewBox="0 0 100 100"><path d="M50 15 C30 15 15 35 15 50" stroke="#F3B900" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 25 C35 25 25 40 25 55" stroke="#233E9C" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 35 C42 35 35 45 35 60" stroke="#DF3027" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
@@ -303,6 +343,38 @@
     <div class="btn-row">
       <a class="btn btn-primary" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank">Escribime por WhatsApp</a>
       <a class="btn btn-ghost" href="#portfolio">Ver portfolio</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:1rem;">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Qué hago</p>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">Áreas de servicio</h2>
+    </div>
+  </div>
+  <div class="services">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 9h16M9 9v11" stroke="#141414" stroke-width="1.6"/></svg>
+      </div>
+      <h3>Branding & Publicidad</h3>
+      <p>Identidad de marca completa para emprendedores: logotipos, paleta de colores, papelería y piezas para redes sociales.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Invitaciones & Fiestas</h3>
+      <p>Diseños personalizados para cumpleaños, bodas, baby showers y toda celebración especial, listos para imprimir o compartir digital.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Etiquetas Escolares & Papelería Infantil</h3>
+      <p>Kits de etiquetas, tarjetas y papelería personalizada para el colegio y el hogar, con diseños pensados para los más chicos.</p>
     </div>
   </div>
 </section>
@@ -489,8 +561,8 @@
   <div>
     <p class="eyebrow">Sobre mí</p>
     <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);margin:.6rem 0 1.4rem;">Diseño autodidacta, con oficio</h2>
-    <p>Me formé sola explorando herramientas y proyectos reales: cada pieza que ves acá es resultado de práctica constante y de escuchar bien lo que cada marca necesita comunicar.</p>
-    <p>Trabajo de punta a punta: desde la primera idea hasta el archivo final listo para imprenta o redes.</p>
+    <p>Soy mamá de dos y diseñadora por pasión. Me formé sola explorando herramientas y proyectos reales: cada pieza que ves acá es resultado de práctica constante y de escuchar bien lo que cada marca necesita comunicar.</p>
+    <p>Trabajo de punta a punta: desde la primera idea hasta el archivo final listo para imprenta o redes, con la misma dedicación que le pongo a todo lo que hago en casa.</p>
     <div class="tools">
       <span class="tool-chip">Canva</span>
       <span class="tool-chip">Adobe Photoshop</span>
@@ -546,8 +618,33 @@
 <section class="contact" id="contacto">
   <p class="eyebrow" style="color:var(--red);">¿Tenés un proyecto?</p>
   <h2>Contame qué necesitás</h2>
-  <p>Escribime por WhatsApp y coordinamos precio, tiempos de entrega y todos los detalles del diseño.</p>
-  <a class="btn btn-primary" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank">Escribime por WhatsApp</a>
+  <p>Completá estos datos y te armo el mensaje de WhatsApp listo para enviar — así no se nos pierde ningún detalle.</p>
+
+  <form class="quote-form" id="quoteForm">
+    <div>
+      <label for="qNombre">Tu nombre</label>
+      <input type="text" id="qNombre" placeholder="¿Cómo te llamás?">
+    </div>
+    <div>
+      <label for="qServicio">¿Qué necesitás?</label>
+      <select id="qServicio">
+        <option value="Branding / identidad de marca">Branding / identidad de marca</option>
+        <option value="Invitación o pieza para una fiesta">Invitación o pieza para una fiesta</option>
+        <option value="Etiquetas escolares o papelería infantil">Etiquetas escolares o papelería infantil</option>
+        <option value="Otro tipo de diseño">Otro tipo de diseño</option>
+      </select>
+    </div>
+    <div>
+      <label for="qPresupuesto">Presupuesto aproximado (opcional)</label>
+      <select id="qPresupuesto">
+        <option value="">Prefiero conversarlo</option>
+        <option value="Menos de 10.000 ARS">Menos de $10.000</option>
+        <option value="Entre 10.000 y 25.000 ARS">Entre $10.000 y $25.000</option>
+        <option value="Más de 25.000 ARS">Más de $25.000</option>
+      </select>
+    </div>
+    <a class="btn btn-primary" id="quoteBtn" href="https://wa.me/5491150609025" target="_blank" style="justify-content:center;">Generar mensaje y enviar por WhatsApp</a>
+  </form>
 </section>
 
 <footer>
@@ -638,8 +735,30 @@
       showCategory(link.dataset.filter);
     });
   });
+
+  const qNombre = document.getElementById('qNombre');
+  const qServicio = document.getElementById('qServicio');
+  const qPresupuesto = document.getElementById('qPresupuesto');
+  const quoteBtn = document.getElementById('quoteBtn');
+
+  function buildQuoteMessage(){
+    const nombre = qNombre.value.trim();
+    const servicio = qServicio.value;
+    const presupuesto = qPresupuesto.value;
+    let msg = 'Hola! ';
+    msg += nombre ? `Soy ${nombre}. ` : '';
+    msg += `Quiero consultar por: ${servicio}.`;
+    if(presupuesto) msg += ` Mi presupuesto aproximado es: ${presupuesto}.`;
+    quoteBtn.href = 'https://wa.me/5491150609025?text=' + encodeURIComponent(msg);
+  }
+  [qNombre, qServicio, qPresupuesto].forEach(el=>{
+    el.addEventListener('input', buildQuoteMessage);
+    el.addEventListener('change', buildQuoteMessage);
+  });
+  buildQuoteMessage();
 </script>
 
 </body>
 </html>
+
 
