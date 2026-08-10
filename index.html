@@ -11,9 +11,10 @@
   :root{
     --ink:#141414;
     --paper:#FAF9F6;
-    --yellow:#F3B900;
-    --blue:#233E9C;
-    --red:#DF3027;
+    --yellow:#FCD116;
+    --blue:#00247D;
+    --red:#CF142B;
+    --whatsapp:#25D366;
     --card:#1E1E1E;
     --muted:#8C8C8C;
     --banner-h:40px;
@@ -92,11 +93,11 @@
   .submenu li{border-bottom:none !important;}
   .submenu li a{padding:.7rem 0 !important;font-size:.92rem;opacity:.8;}
   .wa-menu-btn{
-    display:inline-block;background:#141414;color:#fff !important;opacity:1 !important;
+    display:inline-block;background:var(--whatsapp);color:#fff !important;opacity:1 !important;
     padding:.7rem 1.2rem;border-radius:100px;font-size:.9rem !important;font-weight:600;
     text-align:center;transition:background .25s;
   }
-  .wa-menu-btn:hover{background:#25D366;}
+  .wa-menu-btn:hover{background:#1EBE5A;}
   .menu-overlay{
     display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45;
   }
@@ -124,9 +125,10 @@
     text-decoration:none;transition:transform .2s ease;
   }
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:#141414;color:#fff;transition:background .25s;}
-  .btn-primary:hover{background:#25D366;}
-  .btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--paper);}
+  .btn-primary{background:var(--whatsapp);color:#fff;transition:background .25s;}
+  .btn-primary:hover{background:#1EBE5A;}
+  .btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--paper);transition:transform .2s ease,border-color .2s ease;}
+  .btn-ghost:hover{border-color:var(--yellow);}
 
   .fingerprint{
     position:absolute;right:-10%;top:50%;transform:translateY(-50%);
@@ -146,8 +148,10 @@
   .cat-window{
     position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1/1;
     border:2px solid transparent;background:var(--card);cursor:pointer;padding:0;
+    transition:border-color .25s;
   }
   .cat-window img{width:100%;height:100%;object-fit:cover;display:block;opacity:.75;transition:opacity .25s,transform .4s;}
+  .cat-window:hover{border-color:var(--yellow);}
   .cat-window:hover img{opacity:.95;transform:scale(1.05);}
   .cat-window.active{border-color:var(--yellow);}
   .cat-window.active img{opacity:1;}
@@ -167,7 +171,7 @@
     background:var(--card);border-radius:20px;padding:2.2rem 1.8rem;
     border:1px solid rgba(255,255,255,.06);transition:transform .3s,border-color .3s;
   }
-  .service-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);}
+  .service-card:hover{transform:translateY(-4px);border-color:var(--yellow);}
   .service-icon{
     width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
     background:conic-gradient(from 200deg,var(--yellow),var(--blue),var(--red),var(--yellow));
@@ -181,7 +185,8 @@
     padding:.5rem 1rem;border-radius:100px;border:1px solid rgba(255,255,255,.18);
     background:transparent;color:var(--paper);cursor:pointer;transition:all .2s;
   }
-  .filter-btn.active,.filter-btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  .filter-btn:hover{background:var(--paper);color:var(--ink);border-color:var(--yellow);}
+  .filter-btn.active{background:var(--paper);color:var(--ink);border-color:var(--yellow);}
 
   /* ---------- GRID ---------- */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
@@ -190,8 +195,9 @@
 
   .card{
     position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;
-    background:var(--card);cursor:pointer;
+    background:var(--card);cursor:pointer;border:2px solid transparent;transition:border-color .25s;
   }
+  .card:hover{border-color:var(--yellow);}
   .card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
   .card:hover img{transform:scale(1.06);}
   .card .ph{
@@ -211,7 +217,7 @@
   .card:hover .overlay{opacity:1;}
   .overlay a{
     display:inline-flex;align-items:center;gap:.4rem;
-    background:var(--blue);color:#fff;font-weight:700;font-size:.82rem;
+    background:var(--whatsapp);color:#fff;font-weight:700;font-size:.82rem;
     padding:.55rem 1rem;border-radius:100px;text-decoration:none;
   }
 
@@ -240,11 +246,11 @@
   .marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite;}
   .marquee-track:hover{animation-play-state:paused;}
   .marquee-item{
-    flex:0 0 auto;width:150px;height:150px;margin:0 1.2rem;border-radius:20px;
+    flex:0 0 auto;width:130px;height:130px;margin:0 1.2rem;border-radius:50%;
     background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,.25);
+    box-shadow:0 6px 20px rgba(0,0,0,.25);border:3px solid var(--yellow);
   }
-  .marquee-item img{width:100%;height:100%;object-fit:contain;padding:1.1rem;filter:grayscale(15%);transition:filter .3s;}
+  .marquee-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%);transition:filter .3s;}
   .marquee-item:hover img{filter:grayscale(0%);}
   @keyframes marquee{
     from{transform:translateX(0);}
@@ -261,7 +267,7 @@
   }
   .contact h2{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:1rem;}
   .contact p{color:#5a5a5a;max-width:460px;margin:0 auto 2rem;}
-  .contact .btn-primary:hover{background:#25D366;}
+  .contact .btn-primary:hover{background:#1EBE5A;}
 
   /* ---------- FORMULARIO WHATSAPP ---------- */
   .quote-form{
@@ -272,11 +278,12 @@
     font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;
     text-transform:uppercase;color:#5a5a5a;margin-bottom:.4rem;display:block;
   }
-  .quote-form input,.quote-form select{
+  .quote-form input,.quote-form select,.quote-form textarea{
     width:100%;padding:.8rem 1rem;border-radius:12px;border:1px solid #d8d5cd;
     background:#fff;font-family:'Work Sans',sans-serif;font-size:.92rem;color:var(--ink);
+    resize:vertical;
   }
-  .quote-form input:focus,.quote-form select:focus{outline:2px solid var(--blue);}
+  .quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{outline:2px solid var(--blue);}
 
   footer{
     display:flex;justify-content:space-between;align-items:center;
@@ -288,7 +295,7 @@
   .wa-float{
     position:fixed;bottom:1.6rem;right:1.6rem;z-index:60;
     width:56px;height:56px;border-radius:50%;
-    background:conic-gradient(from 200deg,var(--yellow),var(--blue),var(--red),var(--yellow));
+    background:var(--whatsapp);
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 8px 24px rgba(0,0,0,.45);
   }
@@ -296,10 +303,36 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3B0"/>
+      <stop offset="30%" stop-color="#FFD400"/>
+      <stop offset="55%" stop-color="#B8860B"/>
+      <stop offset="75%" stop-color="#FFE873"/>
+      <stop offset="100%" stop-color="#8A6200"/>
+    </linearGradient>
+    <linearGradient id="blueMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C9CFF"/>
+      <stop offset="30%" stop-color="#0033A0"/>
+      <stop offset="55%" stop-color="#001347"/>
+      <stop offset="75%" stop-color="#4C6FCF"/>
+      <stop offset="100%" stop-color="#000C33"/>
+    </linearGradient>
+    <linearGradient id="redMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A80"/>
+      <stop offset="30%" stop-color="#E4132B"/>
+      <stop offset="55%" stop-color="#7A0A18"/>
+      <stop offset="75%" stop-color="#FF5C4D"/>
+      <stop offset="100%" stop-color="#5C0611"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <div class="top-banner">✨ Cada proyecto tiene una huella única ✨</div>
 <nav>
   <div class="brand">
-    <svg class="brand-mark" viewBox="0 0 100 100"><path d="M50 15 C30 15 15 35 15 50" stroke="#F3B900" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 25 C35 25 25 40 25 55" stroke="#233E9C" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 35 C42 35 35 45 35 60" stroke="#DF3027" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
+    <svg class="brand-mark" viewBox="0 0 100 100"><path d="M50 15 C30 15 15 35 15 50" stroke="url(#goldMetal)" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 25 C35 25 25 40 25 55" stroke="url(#blueMetal)" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M50 35 C42 35 35 45 35 60" stroke="url(#redMetal)" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
     Actividad Digital
   </div>
   <ul id="navMenu">
@@ -326,15 +359,15 @@
 
 <section class="hero">
   <svg class="fingerprint" viewBox="0 0 400 400" fill="none">
-    <path d="M200 40 C110 40 40 110 40 200" stroke="#F3B900" stroke-width="10" stroke-linecap="round"/>
-    <path d="M200 65 C125 65 65 125 65 200" stroke="#F3B900" stroke-width="10" stroke-linecap="round" opacity=".7"/>
-    <path d="M200 90 C140 90 90 140 90 200" stroke="#233E9C" stroke-width="10" stroke-linecap="round"/>
-    <path d="M200 115 C155 115 115 155 115 200" stroke="#233E9C" stroke-width="10" stroke-linecap="round" opacity=".7"/>
-    <path d="M200 140 C170 140 140 170 140 200" stroke="#DF3027" stroke-width="10" stroke-linecap="round"/>
-    <path d="M200 165 C185 165 165 185 165 210" stroke="#DF3027" stroke-width="10" stroke-linecap="round" opacity=".7"/>
-    <path d="M200 40 C290 40 360 110 360 200" stroke="#DF3027" stroke-width="10" stroke-linecap="round" opacity=".55"/>
-    <path d="M200 65 C275 65 335 125 335 200" stroke="#DF3027" stroke-width="10" stroke-linecap="round" opacity=".4"/>
-    <path d="M200 90 C260 90 310 140 310 200" stroke="#233E9C" stroke-width="10" stroke-linecap="round" opacity=".4"/>
+    <path d="M200 40 C110 40 40 110 40 200" stroke="url(#goldMetal)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M200 65 C125 65 65 125 65 200" stroke="url(#goldMetal)" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+    <path d="M200 90 C140 90 90 140 90 200" stroke="url(#blueMetal)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M200 115 C155 115 115 155 115 200" stroke="url(#blueMetal)" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+    <path d="M200 140 C170 140 140 170 140 200" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M200 165 C185 165 165 185 165 210" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+    <path d="M200 40 C290 40 360 110 360 200" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+    <path d="M200 65 C275 65 335 125 335 200" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round" opacity=".4"/>
+    <path d="M200 90 C260 90 310 140 310 200" stroke="url(#blueMetal)" stroke-width="10" stroke-linecap="round" opacity=".4"/>
   </svg>
   <div class="hero-inner">
     <p class="eyebrow">Diseños para tu emprendimiento</p>
@@ -571,7 +604,7 @@
     </div>
   </div>
   <div class="about-visual">
-    <svg width="60%" viewBox="0 0 100 100"><path d="M50 15 C30 15 15 35 15 50" stroke="#F3B900" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 25 C35 25 25 40 25 55" stroke="#233E9C" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 35 C42 35 35 45 35 60" stroke="#DF3027" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 15 C70 15 85 35 85 50" stroke="#DF3027" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/><path d="M50 25 C65 25 75 40 75 55" stroke="#233E9C" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/></svg>
+    <svg width="60%" viewBox="0 0 100 100"><path d="M50 15 C30 15 15 35 15 50" stroke="url(#goldMetal)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 25 C35 25 25 40 25 55" stroke="url(#blueMetal)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 35 C42 35 35 45 35 60" stroke="url(#redMetal)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 15 C70 15 85 35 85 50" stroke="url(#redMetal)" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/><path d="M50 25 C65 25 75 40 75 55" stroke="url(#blueMetal)" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/></svg>
   </div>
 </section>
 
@@ -635,13 +668,8 @@
       </select>
     </div>
     <div>
-      <label for="qPresupuesto">Presupuesto aproximado (opcional)</label>
-      <select id="qPresupuesto">
-        <option value="">Prefiero conversarlo</option>
-        <option value="Menos de 10.000 ARS">Menos de $10.000</option>
-        <option value="Entre 10.000 y 25.000 ARS">Entre $10.000 y $25.000</option>
-        <option value="Más de 25.000 ARS">Más de $25.000</option>
-      </select>
+      <label for="qDetalle">Contame un poco tu idea (opcional)</label>
+      <textarea id="qDetalle" rows="3" placeholder="Ej: quiero un logo para mi emprendimiento de repostería, colores pasteles..."></textarea>
     </div>
     <a class="btn btn-primary" id="quoteBtn" href="https://wa.me/5491150609025" target="_blank" style="justify-content:center;">Generar mensaje y enviar por WhatsApp</a>
   </form>
@@ -649,7 +677,10 @@
 
 <footer>
   <span>© 2026 Actividad Digital</span>
-  <a href="https://www.instagram.com/actividad.digital/" target="_blank">@actividad.digital</a>
+  <a href="https://www.instagram.com/actividad.digital?igsh=N2dmM21seHdsd3Bx" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+    @actividad.digital
+  </a>
 </footer>
 
 <a class="wa-float" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank" aria-label="WhatsApp">
@@ -738,20 +769,20 @@
 
   const qNombre = document.getElementById('qNombre');
   const qServicio = document.getElementById('qServicio');
-  const qPresupuesto = document.getElementById('qPresupuesto');
+  const qDetalle = document.getElementById('qDetalle');
   const quoteBtn = document.getElementById('quoteBtn');
 
   function buildQuoteMessage(){
     const nombre = qNombre.value.trim();
     const servicio = qServicio.value;
-    const presupuesto = qPresupuesto.value;
+    const detalle = qDetalle.value.trim();
     let msg = 'Hola! ';
     msg += nombre ? `Soy ${nombre}. ` : '';
     msg += `Quiero consultar por: ${servicio}.`;
-    if(presupuesto) msg += ` Mi presupuesto aproximado es: ${presupuesto}.`;
+    if(detalle) msg += ` Mi idea: ${detalle}`;
     quoteBtn.href = 'https://wa.me/5491150609025?text=' + encodeURIComponent(msg);
   }
-  [qNombre, qServicio, qPresupuesto].forEach(el=>{
+  [qNombre, qServicio, qDetalle].forEach(el=>{
     el.addEventListener('input', buildQuoteMessage);
     el.addEventListener('change', buildQuoteMessage);
   });
@@ -760,5 +791,9 @@
 
 </body>
 </html>
+
+
+
+
 
 
