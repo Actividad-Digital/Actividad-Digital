@@ -213,16 +213,37 @@
   .card .arcs{position:absolute;inset:0;opacity:.35;transition:opacity .35s;}
   .card:hover .arcs{opacity:.7;}
   .card .overlay{
-    position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.2rem;
-    background:linear-gradient(to top,rgba(0,0,0,.82),transparent 55%);
+    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:1rem;
+    background:linear-gradient(to top,rgba(0,0,0,.5),transparent 55%);
     opacity:0;transition:opacity .3s;
   }
   .card:hover .overlay{opacity:1;}
-  .overlay a{
-    display:inline-flex;align-items:center;gap:.4rem;
-    background:var(--whatsapp);color:#fff;font-weight:700;font-size:.82rem;
-    padding:.55rem 1rem;border-radius:100px;text-decoration:none;
+  .overlay .expand-icon{
+    width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);
+    display:flex;align-items:center;justify-content:center;
   }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:300;background:rgba(10,10,10,.92);
+    display:none;align-items:center;justify-content:center;padding:5vh 4vw;
+    backdrop-filter:blur(6px);
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:640px;width:100%;text-align:center;}
+  .lightbox-inner img{width:100%;max-height:70vh;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .lightbox-close{
+    position:absolute;top:1.4rem;right:1.6rem;width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;
+    font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-note{color:#B8B6B0;font-size:.85rem;margin:1.2rem 0 .8rem;max-width:480px;margin-left:auto;margin-right:auto;}
+  .lightbox-wa{
+    display:inline-flex;align-items:center;gap:.5rem;background:var(--whatsapp);color:#fff;
+    font-weight:700;font-size:.9rem;padding:.75rem 1.5rem;border-radius:100px;text-decoration:none;
+    transition:background .25s;
+  }
+  .lightbox-wa:hover{background:#1EBE5A;}
 
   /* ---------- ABOUT ---------- */
   .about{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
@@ -264,17 +285,6 @@
     background:linear-gradient(90deg,var(--yellow),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .stat-label{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
 
-  /* ---------- CURSOR PERSONALIZADO (portfolio) ---------- */
-  .custom-cursor{
-    position:fixed;top:0;left:0;width:64px;height:64px;border-radius:50%;
-    background:var(--yellow);color:#141414;font-family:'Space Mono',monospace;font-weight:700;font-size:.72rem;
-    display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:200;
-    transform:translate(-50%,-50%) scale(0);transition:transform .2s ease;text-transform:uppercase;
-  }
-  .custom-cursor.active{transform:translate(-50%,-50%) scale(1);}
-  @media (hover:hover) and (pointer:fine){
-    .cursor-enabled .card{cursor:none;}
-  }
   .marquee-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%);transition:filter .3s;}
   .marquee-item:hover img{filter:grayscale(0%);}
   @keyframes marquee{
@@ -417,6 +427,13 @@
   </div>
   <div class="services">
     <div class="service-card reveal">
+      <div class="service-icon icon-yellow">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Etiquetas Escolares & Papelería Infantil</h3>
+      <p>Kits de etiquetas, tarjetas y papelería personalizada para el colegio y el hogar, con diseños pensados para los más chicos.</p>
+    </div>
+    <div class="service-card reveal">
       <div class="service-icon icon-blue">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 9h16M9 9v11" stroke="#FFFFFF" stroke-width="1.6"/></svg>
       </div>
@@ -424,18 +441,11 @@
       <p>Identidad de marca completa para emprendedores: logotipos, paleta de colores, papelería y piezas para redes sociales.</p>
     </div>
     <div class="service-card reveal">
-      <div class="service-icon icon-yellow">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <div class="service-icon icon-red">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/></svg>
       </div>
       <h3>Invitaciones & Fiestas</h3>
       <p>Diseños personalizados para cumpleaños, bodas, baby showers y toda celebración especial, listos para imprimir o compartir digital.</p>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon icon-red">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 4v5h5" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      </div>
-      <h3>Etiquetas Escolares & Papelería Infantil</h3>
-      <p>Kits de etiquetas, tarjetas y papelería personalizada para el colegio y el hogar, con diseños pensados para los más chicos.</p>
     </div>
   </div>
 </section>
@@ -483,137 +493,137 @@
   <div class="grid" id="grid">
     <!-- CARD TEMPLATE: reemplazá el <div class="ph">...</div> por
          <img src="ruta-de-tu-imagen.jpg" style="width:100%;height:100%;object-fit:cover"> -->
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Satén Style J&J" data-img="assets/saten-style.jpg">
       <img src="assets/saten-style.jpg" alt="Logotipo Satén Style J&J" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sat%C3%A9n%20Style" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Style Printed" data-img="assets/style-printed.jpg">
       <img src="assets/style-printed.jpg" alt="Logotipo Style Printed" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Style%20Printed" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus.jpg">
       <img src="assets/sweet-lotus.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sweet%20Lotus" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Logotipo y etiquetas MJO Accesorios" data-img="assets/mjo-accesorios.jpg">
       <img src="assets/mjo-accesorios.jpg" alt="Logotipo y etiquetas MJO Accesorios" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20MJO%20Accesorios" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas">
+    <div class="card reveal" data-cat="etiquetas" data-title="Logotipo y etiqueta D'Francesco Pastelería" data-img="assets/dfrancesco.jpg">
       <img src="assets/dfrancesco.jpg" alt="Logotipo y etiqueta D'Francesco Pastelería" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20D%27Francesco" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Oscar Electricista Domiciliario" data-img="assets/oscar-electricista.jpg">
       <img src="assets/oscar-electricista.jpg" alt="Logotipo Oscar Electricista Domiciliario" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Oscar%20Electricista" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Angela Cakes & Details" data-img="assets/angela-cakes.jpg">
       <img src="assets/angela-cakes.jpg" alt="Logotipo Angela Cakes & Details" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Angela%20Cakes%20%26%20Details" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Amapola" data-img="assets/amapola.jpg">
       <img src="assets/amapola.jpg" alt="Logotipo Amapola" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Amapola" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Rachel & Sakti" data-img="assets/rachel-sakti.jpg">
       <img src="assets/rachel-sakti.jpg" alt="Identidad de marca Rachel & Sakti" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Rachel%20%26%20Sakti" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo LM Studio cejas y pestañas" data-img="assets/lm-studio.jpg">
       <img src="assets/lm-studio.jpg" alt="Logotipo LM Studio cejas y pestañas" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20LM%20Studio" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Amapola aplicada en producto" data-img="assets/amapola-mockup.jpg">
       <img src="assets/amapola-mockup.jpg" alt="Marca Amapola aplicada en producto" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Amapola" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Rachel & Sakti aplicada en bolsa" data-img="assets/rachel-sakti-bolsa.jpg">
       <img src="assets/rachel-sakti-bolsa.jpg" alt="Marca Rachel & Sakti aplicada en bolsa" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Rachel%20%26%20Sakti" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas">
+    <div class="card reveal" data-cat="etiquetas" data-title="Logotipo Mi Dulce Jireh" data-img="assets/mi-dulce-jireh.jpg">
       <img src="assets/mi-dulce-jireh.jpg" alt="Logotipo Mi Dulce Jireh" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Mi%20Dulce%20Jireh" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo SEI Muebles" data-img="assets/sei-muebles.jpg">
       <img src="assets/sei-muebles.jpg" alt="Logotipo SEI Muebles" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20SEI%20Muebles" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Satén Style aplicada en caja" data-img="assets/saten-style-caja.jpg">
       <img src="assets/saten-style-caja.jpg" alt="Marca Satén Style aplicada en caja" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sat%C3%A9n%20Style" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Oscar Electricista aplicada en gorra" data-img="assets/oscar-gorra.jpg">
       <img src="assets/oscar-gorra.jpg" alt="Marca Oscar Electricista aplicada en gorra" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Oscar%20Electricista" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo MJO Accesorios" data-img="assets/mjo-logo.jpg">
       <img src="assets/mjo-logo.jpg" alt="Logotipo MJO Accesorios" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20MJO%20Accesorios" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Rachel & Sakti" data-img="assets/rachel-sakti-logo.jpg">
       <img src="assets/rachel-sakti-logo.jpg" alt="Logotipo Rachel & Sakti" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Rachel%20%26%20Sakti" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos">
+    <div class="card reveal" data-cat="logos" data-title="Logotipo Yennys Santana" data-img="assets/yennys-santana.jpg">
       <img src="assets/yennys-santana.jpg" alt="Logotipo Yennys Santana" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Yennys%20Santana" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas">
+    <div class="card reveal" data-cat="etiquetas" data-title="Etiqueta Angela Cakes & Details" data-img="assets/angela-etiqueta.jpg">
       <img src="assets/angela-etiqueta.jpg" alt="Etiqueta Angela Cakes & Details" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20una%20etiqueta%20como%20la%20de%20Angela%20Cakes%20%26%20Details" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas">
+    <div class="card reveal" data-cat="etiquetas" data-title="Etiqueta Angela Cakes & Details aplicada en torta" data-img="assets/angela-etiqueta-mockup.jpg">
       <img src="assets/angela-etiqueta-mockup.jpg" alt="Etiqueta Angela Cakes & Details aplicada en torta" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20una%20etiqueta%20como%20la%20de%20Angela%20Cakes%20%26%20Details" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca D'Francesco Pastelería aplicada en packaging" data-img="assets/dfrancesco-mockup.jpg">
       <img src="assets/dfrancesco-mockup.jpg" alt="Marca D'Francesco Pastelería aplicada en packaging" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20D%27Francesco" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Angela Cakes & Details aplicada en uniforme y packaging" data-img="assets/angela-mockup.jpg">
       <img src="assets/angela-mockup.jpg" alt="Marca Angela Cakes & Details aplicada en uniforme y packaging" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Angela%20Cakes%20%26%20Details" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Sweet Lotus aplicada en productos y papelería" data-img="assets/sweet-lotus-mockup.jpg">
       <img src="assets/sweet-lotus-mockup.jpg" alt="Marca Sweet Lotus aplicada en productos y papelería" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sweet%20Lotus" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca LM Studio aplicada en maletín y tarjetas" data-img="assets/lm-studio-mockup.jpg">
       <img src="assets/lm-studio-mockup.jpg" alt="Marca LM Studio aplicada en maletín y tarjetas" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20LM%20Studio" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Mi Dulce Jireh aplicada en envases de producto" data-img="assets/mi-dulce-jireh-mockup.jpg">
       <img src="assets/mi-dulce-jireh-mockup.jpg" alt="Marca Mi Dulce Jireh aplicada en envases de producto" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Mi%20Dulce%20Jireh" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups">
+    <div class="card reveal" data-cat="mockups" data-title="Marca Yennys Santana aplicada en bolsas de regalo" data-img="assets/yennys-santana-mockup.jpg">
       <img src="assets/yennys-santana-mockup.jpg" alt="Marca Yennys Santana aplicada en bolsas de regalo" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Yennys%20Santana" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Style Printed" data-img="assets/style-printed-identidad.jpg">
       <img src="assets/style-printed-identidad.jpg" alt="Identidad de marca Style Printed" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Style%20Printed" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca MJO Accesorios" data-img="assets/mjo-identidad.jpg">
       <img src="assets/mjo-identidad.jpg" alt="Identidad de marca MJO Accesorios" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20MJO%20Accesorios" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Oscar Electricista" data-img="assets/oscar-identidad.jpg">
       <img src="assets/oscar-identidad.jpg" alt="Identidad de marca Oscar Electricista" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Oscar%20Electricista" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Angela Cakes & Details" data-img="assets/angela-identidad.jpg">
       <img src="assets/angela-identidad.jpg" alt="Identidad de marca Angela Cakes & Details" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Angela%20Cakes%20%26%20Details" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus-identidad2.jpg">
       <img src="assets/sweet-lotus-identidad2.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Sweet%20Lotus" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad">
+    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Amapola" data-img="assets/amapola-identidad.jpg">
       <img src="assets/amapola-identidad.jpg" alt="Identidad de marca Amapola" loading="lazy">
-      <div class="overlay"><a href="https://wa.me/5491150609025?text=Hola!%20me%20interesa%20un%20dise%C3%B1o%20como%20el%20de%20Amapola" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
   </div>
 </section>
@@ -688,7 +698,7 @@
 </section>
 
 <section class="contact reveal" id="contacto">
-  <p class="eyebrow" style="color:var(--red);">¿Tenés un proyecto?</p>
+  <p class="eyebrow" style="color:var(--paper);font-size:.85rem;">¿Tenés un proyecto?</p>
   <h2>Contame qué necesitás</h2>
   <p>Completá estos datos y te armo el mensaje de WhatsApp listo para enviar — así no se nos pierde ningún detalle.</p>
 
@@ -722,7 +732,17 @@
   </a>
 </footer>
 
-<div class="custom-cursor" id="customCursor">Ver</div>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">×</button>
+  <div class="lightbox-inner">
+    <img id="lightboxImg" src="" alt="">
+    <p class="lightbox-note">¿Te gustó este estilo? Escribime y armamos algo con ese mismo espíritu para tu proyecto — siempre trabajo diseños únicos, ninguna pieza se repite igual para dos clientes.</p>
+    <a class="lightbox-wa" id="lightboxWa" href="#" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.06L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.65 0-3.18-.46-4.5-1.26l-.32-.19-3 .78.8-2.93-.21-.32A7.94 7.94 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+      Quiero algo similar
+    </a>
+  </div>
+</div>
 
 <a class="wa-float" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.06L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.65 0-3.18-.46-4.5-1.26l-.32-.19-3 .78.8-2.93-.21-.32A7.94 7.94 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
@@ -867,25 +887,41 @@
   }, {threshold:0.4});
   document.querySelectorAll('.stat-num').forEach(el=> statObserver.observe(el));
 
-  /* ---------- CURSOR PERSONALIZADO EN PORTFOLIO ---------- */
-  if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
-    document.body.classList.add('cursor-enabled');
-    const cursor = document.getElementById('customCursor');
-    let mouseX = 0, mouseY = 0;
-    document.addEventListener('mousemove', (e)=>{
-      mouseX = e.clientX; mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
-    });
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('mouseenter', ()=> cursor.classList.add('active'));
-      card.addEventListener('mouseleave', ()=> cursor.classList.remove('active'));
-    });
+  /* ---------- LIGHTBOX DEL PORTFOLIO ---------- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxWa = document.getElementById('lightboxWa');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(card){
+    const title = card.dataset.title || 'este diseño';
+    const img = card.dataset.img;
+    lightboxImg.src = img;
+    lightboxImg.alt = title;
+    const msg = `Hola! Vi "${title}" en tu portfolio y me gustaría algo con un estilo similar (no idéntico) para mi proyecto.`;
+    lightboxWa.href = 'https://wa.me/5491150609025?text=' + encodeURIComponent(msg);
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click', ()=> openLightbox(card));
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e)=>{
+    if(e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') closeLightbox();
+  });
 </script>
 
 </body>
 </html>
+
 
 
 
