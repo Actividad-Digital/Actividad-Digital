@@ -173,12 +173,37 @@
   }
   .service-card:hover{transform:translateY(-4px);border-color:var(--yellow);}
   .service-icon{
-    width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-    margin:0 auto 1.4rem;
+    position:relative;width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+    margin:0 auto 1.4rem;overflow:hidden;
+    box-shadow:
+      0 10px 20px -6px rgba(0,0,0,.55),
+      0 2px 4px rgba(0,0,0,.35),
+      inset 0 1px 1px rgba(255,255,255,.35),
+      inset 0 -6px 10px rgba(0,0,0,.18);
+    transition:transform .3s, box-shadow .3s;
   }
-  .service-icon.icon-blue{background:var(--blue);}
-  .service-icon.icon-yellow{background:var(--yellow);}
-  .service-icon.icon-red{background:var(--red);}
+  .service-icon::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(255,255,255,.35), rgba(255,255,255,0) 45%, rgba(0,0,0,.12) 100%);
+    pointer-events:none;
+  }
+  .service-icon::after{
+    content:"";position:absolute;top:-40%;left:-20%;width:70%;height:70%;
+    background:radial-gradient(circle, rgba(255,255,255,.45), rgba(255,255,255,0) 70%);
+    transform:rotate(20deg);pointer-events:none;
+  }
+  .service-icon svg{position:relative;z-index:1;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));}
+  .service-card:hover .service-icon{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:
+      0 14px 26px -6px rgba(0,0,0,.6),
+      0 3px 6px rgba(0,0,0,.4),
+      inset 0 1px 1px rgba(255,255,255,.4),
+      inset 0 -6px 10px rgba(0,0,0,.2);
+  }
+  .service-icon.icon-blue{background:linear-gradient(155deg,#1B3FA0 0%,var(--blue) 55%,#001548 100%);}
+  .service-icon.icon-yellow{background:linear-gradient(155deg,#FFE066 0%,var(--yellow) 55%,#D9A800 100%);}
+  .service-icon.icon-red{background:linear-gradient(155deg,#E63950 0%,var(--red) 55%,#8C0018 100%);}
   .service-card{text-align:center;}
   .service-card h3{font-family:'Fredoka',sans-serif;font-size:1.25rem;margin-bottom:.6rem;color:var(--paper);}
   .service-card p{color:#B8B6B0;font-size:.92rem;line-height:1.6;}
@@ -428,21 +453,21 @@
   <div class="services">
     <div class="service-card reveal">
       <div class="service-icon icon-yellow">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 4v5h5" stroke="#141414" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M15 4v5h5" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
       </div>
       <h3>Etiquetas Escolares & Papelería Infantil</h3>
       <p>Kits de etiquetas, tarjetas y papelería personalizada para el colegio y el hogar, con diseños pensados para los más chicos.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-icon icon-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 9h16M9 9v11" stroke="#FFFFFF" stroke-width="1.6"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 9h16M9 9v11" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/></svg>
       </div>
       <h3>Branding & Publicidad</h3>
       <p>Identidad de marca completa para emprendedores: logotipos, paleta de colores, papelería y piezas para redes sociales.</p>
     </div>
     <div class="service-card reveal">
       <div class="service-icon icon-red">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
       </div>
       <h3>Invitaciones & Fiestas</h3>
       <p>Diseños personalizados para cumpleaños, bodas, baby showers y toda celebración especial, listos para imprimir o compartir digital.</p>
@@ -921,6 +946,7 @@
 
 </body>
 </html>
+
 
 
 
