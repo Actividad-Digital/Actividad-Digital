@@ -106,7 +106,7 @@
   @media(max-width:900px){ .fingerprint{opacity:.18;right:-20%;} }
 
   .about-badge-card{
-    background:var(--paper);border-radius:20px;padding:2.2rem;
+    background:var(--paper);border-radius:50%;padding:2.2rem;
     display:flex;align-items:center;justify-content:center;
     width:80%;max-width:320px;aspect-ratio:1;
     box-shadow:0 20px 45px rgba(0,0,0,.5);
@@ -261,6 +261,47 @@
   .service-card{text-align:center;}
   .service-card h3{font-family:'Fredoka',sans-serif;font-size:1.25rem;margin-bottom:.6rem;color:var(--paper);}
   .service-card p{color:#B8B6B0;font-size:.92rem;line-height:1.6;}
+
+  /* ---------- FLIP CARDS ---------- */
+  .flip-card{perspective:1600px;min-height:340px;}
+  .flip-card-inner{
+    position:relative;width:100%;height:100%;min-height:340px;
+    transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;cursor:pointer;
+  }
+  .flip-card.flipped .flip-card-inner{transform:rotateY(180deg);}
+  .flip-face{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:20px;padding:2.2rem 1.8rem;display:flex;flex-direction:column;
+  }
+  .flip-front{
+    background:var(--card);border:1px solid rgba(255,255,255,.06);
+    align-items:center;justify-content:flex-start;text-align:center;
+    transition:border-color .3s;
+  }
+  .flip-card:hover .flip-front{border-color:var(--yellow);}
+  .flip-front .flip-hint{
+    margin-top:auto;padding-top:1rem;font-family:'Space Mono',monospace;font-size:.7rem;
+    color:var(--muted);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;
+  }
+  .flip-back{
+    background:linear-gradient(155deg,#1E1E1E 0%,#141414 100%);border:1px solid rgba(252,209,22,.25);
+    transform:rotateY(180deg);justify-content:center;text-align:left;
+  }
+  .flip-back h4{font-family:'Fredoka',sans-serif;font-size:1.05rem;color:var(--yellow);margin-bottom:.9rem;}
+  .flip-back ul{list-style:none;margin-bottom:1.4rem;}
+  .flip-back li{
+    color:#D8D6D0;font-size:.88rem;line-height:1.6;padding-left:1.3rem;position:relative;margin-bottom:.5rem;
+  }
+  .flip-back li::before{
+    content:"✓";position:absolute;left:0;color:var(--yellow);font-weight:700;
+  }
+  .flip-back-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    background:var(--whatsapp);color:#fff;font-family:'Work Sans',sans-serif;font-weight:600;font-size:.88rem;
+    padding:.75rem 1.2rem;border-radius:999px;text-decoration:none;transition:background .2s,transform .2s;
+  }
+  .flip-back-cta:hover{background:#1EBE5A;transform:translateY(-2px);}
+  @media(max-width:800px){.flip-card,.flip-card-inner{min-height:300px;}}
   .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;}
   .filter-btn{
     font-family:'Space Mono',monospace;font-size:.78rem;
@@ -310,7 +351,7 @@
   }
   .lightbox.open{display:flex;}
   .lightbox-inner{max-width:640px;width:100%;text-align:center;}
-  .lightbox-inner img{width:100%;max-height:70vh;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .lightbox-inner img{width:100%;max-height:70vh;object-fit:contain;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
   .lightbox-close{
     position:absolute;top:1.4rem;right:1.6rem;width:44px;height:44px;border-radius:50%;
     background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;
@@ -533,26 +574,67 @@
     </div>
   </div>
   <div class="services">
-    <div class="service-card reveal">
-      <div class="service-icon icon-yellow">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M15 4v5h5" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div class="flip-card reveal" tabindex="0" role="button" aria-label="Etiquetas Escolares y Papelería Infantil, tocar para ver más">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="service-icon icon-yellow">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l5 5v11H6z" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M15 4v5h5" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Etiquetas Escolares & Papelería Infantil</h3>
+          <p>Kits de etiquetas, tarjetas y papelería personalizada para el colegio y el hogar, con diseños pensados para los más chicos.</p>
+          <span class="flip-hint">👆 Tocá para ver qué incluye</span>
+        </div>
+        <div class="flip-face flip-back">
+          <h4>Qué incluye</h4>
+          <ul>
+            <li>Etiquetas para útiles, cuadernos y mochila</li>
+            <li>Separadores y portadas de carpeta personalizados</li>
+          </ul>
+          <a class="flip-back-cta" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20etiquetas%20escolares" target="_blank" onclick="event.stopPropagation()">Pedir etiquetas →</a>
+        </div>
       </div>
-      <h3>Etiquetas Escolares & Papelería Infantil</h3>
-      <p>Kits de etiquetas, tarjetas y papelería personalizada para el colegio y el hogar, con diseños pensados para los más chicos.</p>
     </div>
-    <div class="service-card reveal">
-      <div class="service-icon icon-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 9h16M9 9v11" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <div class="flip-card reveal" tabindex="0" role="button" aria-label="Branding y Publicidad, tocar para ver más">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="service-icon icon-blue">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 9h16M9 9v11" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Branding & Publicidad</h3>
+          <p>Identidad de marca completa para emprendedores: logotipos, paleta de colores, papelería y piezas para redes sociales.</p>
+          <span class="flip-hint">👆 Tocá para ver qué incluye</span>
+        </div>
+        <div class="flip-face flip-back">
+          <h4>Qué incluye</h4>
+          <ul>
+            <li>Logo + paleta de colores de marca</li>
+            <li>Papelería: tarjetas, facturas, sellos</li>
+            <li>Piezas para redes: posts, historias, portadas</li>
+          </ul>
+          <a class="flip-back-cta" href="https://wa.me/5491150609025?text=Hola!%20quiero%20armar%20la%20identidad%20de%20mi%20marca" target="_blank" onclick="event.stopPropagation()">Armar mi marca →</a>
+        </div>
       </div>
-      <h3>Branding & Publicidad</h3>
-      <p>Identidad de marca completa para emprendedores: logotipos, paleta de colores, papelería y piezas para redes sociales.</p>
     </div>
-    <div class="service-card reveal">
-      <div class="service-icon icon-red">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div class="flip-card reveal" tabindex="0" role="button" aria-label="Invitaciones y Fiestas, tocar para ver más">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="service-icon icon-red">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.5L20 9l-4.4 3.8L17 19l-5-3.2L7 19l1.4-6.2L4 9l5.6-.5L12 3z" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Invitaciones & Fiestas</h3>
+          <p>Diseños personalizados para cumpleaños, bodas, baby showers y toda celebración especial, listos para imprimir o compartir digital.</p>
+          <span class="flip-hint">👆 Tocá para ver qué incluye</span>
+        </div>
+        <div class="flip-face flip-back">
+          <h4>Qué incluye</h4>
+          <ul>
+            <li>Diseño 100% personalizado a tu evento</li>
+            <li>Versión digital lista para compartir</li>
+            <li>Versión imprimible en alta calidad</li>
+          </ul>
+          <a class="flip-back-cta" href="https://wa.me/5491150609025?text=Hola!%20quiero%20una%20invitaci%C3%B3n%20personalizada" target="_blank" onclick="event.stopPropagation()">Pedir invitación →</a>
+        </div>
       </div>
-      <h3>Invitaciones & Fiestas</h3>
-      <p>Diseños personalizados para cumpleaños, bodas, baby showers y toda celebración especial, listos para imprimir o compartir digital.</p>
     </div>
   </div>
 </section>
@@ -1137,6 +1219,17 @@
     if(e.key === 'Escape') closeLightbox();
   });
 
+  /* ---------- FLIP CARDS ---------- */
+  document.querySelectorAll('.flip-card').forEach(card=>{
+    card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+    card.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+
   /* ---------- WHATSAPP WELCOME BUBBLE ---------- */
   (function(){
     const bubble = document.getElementById('waBubble');
@@ -1158,6 +1251,7 @@
 
 </body>
 </html>
+
 
 
 
