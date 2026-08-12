@@ -105,10 +105,13 @@
   }
   @media(max-width:900px){ .fingerprint{opacity:.18;right:-20%;} }
 
-  .about-badge{
-    width:min(82%,340px);height:auto;
-    filter:drop-shadow(0 20px 45px rgba(0,0,0,.6));
+  .about-badge-card{
+    background:var(--paper);border-radius:20px;padding:2.2rem;
+    display:flex;align-items:center;justify-content:center;
+    width:80%;max-width:320px;aspect-ratio:1;
+    box-shadow:0 20px 45px rgba(0,0,0,.5);
   }
+  .about-badge{width:100%;height:auto;display:block;}
   nav a{color:var(--paper);text-decoration:none;opacity:.75;transition:opacity .2s;}
   nav a:hover{opacity:1;}
   .nav-cta{display:none;}
@@ -482,7 +485,7 @@
       <button class="sub-toggle" id="portfolioToggle">Portfolio <span class="chev">▾</span></button>
       <ul class="submenu" id="portfolioSubmenu">
         <li><a href="#portfolio" data-filter="logos">Logos</a></li>
-        <li><a href="#portfolio" data-filter="flyers">Flyers</a></li>
+        <li><a href="#portfolio" data-filter="flyers">Flyers/Post</a></li>
         <li><a href="#portfolio" data-filter="etiquetas">Etiquetas</a></li>
         <li><a href="#portfolio" data-filter="mockups">Mockups</a></li>
         <li><a href="#portfolio" data-filter="identidad">Identidad de marca</a></li>
@@ -564,7 +567,7 @@
 
   <div class="filters" id="filterLinks">
     <button class="filter-btn" data-filter="logos">Logos</button>
-    <button class="filter-btn" data-filter="flyers">Flyers</button>
+    <button class="filter-btn" data-filter="flyers">Flyers/Post</button>
     <button class="filter-btn" data-filter="etiquetas">Etiquetas</button>
     <button class="filter-btn" data-filter="mockups">Mockups</button>
     <button class="filter-btn" data-filter="identidad">Identidad de marca</button>
@@ -575,8 +578,9 @@
       <img src="assets/saten-style.jpg" alt="Logos" loading="eager" width="300" height="300">
       <span class="cw-label">Logos</span>
     </button>
-    <button class="cat-window empty" data-filter="flyers">
-      <span class="cw-label">Flyers<br><small style="font-weight:400;">Próximamente</small></span>
+    <button class="cat-window" data-filter="flyers">
+      <img src="assets/flyer-style-printed-regala-algo-unico.jpg" alt="Flyers/Post" loading="lazy" width="300" height="300">
+      <span class="cw-label">Flyers/Post</span>
     </button>
     <button class="cat-window" data-filter="etiquetas">
       <img src="assets/dfrancesco.jpg" alt="Etiquetas" loading="lazy" width="300" height="300">
@@ -681,6 +685,34 @@
       <img src="assets/angela-etiqueta-mockup.jpg" alt="Etiqueta Angela Cakes & Details aplicada en torta" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Matemática" data-img="assets/etiqueta-separador-matematica-1.jpg">
+      <img src="assets/etiqueta-separador-matematica-1.jpg" alt="Separador escolar Matemática" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Matemática, variante" data-img="assets/etiqueta-separador-matematica-2.jpg">
+      <img src="assets/etiqueta-separador-matematica-2.jpg" alt="Separador escolar Matemática, variante" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Lenguaje" data-img="assets/etiqueta-separador-lenguaje.jpg">
+      <img src="assets/etiqueta-separador-lenguaje.jpg" alt="Separador escolar Lenguaje" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Lengua y Literatura" data-img="assets/etiqueta-separador-lengua-literatura.jpg">
+      <img src="assets/etiqueta-separador-lengua-literatura.jpg" alt="Separador escolar Lengua y Literatura" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Ciencias Naturales" data-img="assets/etiqueta-separador-ciencias-naturales-1.jpg">
+      <img src="assets/etiqueta-separador-ciencias-naturales-1.jpg" alt="Separador escolar Ciencias Naturales" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Ciencias Sociales" data-img="assets/etiqueta-separador-ciencias-sociales.jpg">
+      <img src="assets/etiqueta-separador-ciencias-sociales.jpg" alt="Separador escolar Ciencias Sociales" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="etiquetas" data-title="Portada personalizada de carpeta escolar" data-img="assets/etiqueta-separador-portada-juan.jpg">
+      <img src="assets/etiqueta-separador-portada-juan.jpg" alt="Portada personalizada de carpeta escolar" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca D'Francesco Pastelería aplicada en packaging" data-img="assets/dfrancesco-mockup.jpg">
       <img src="assets/dfrancesco-mockup.jpg" alt="Marca D'Francesco Pastelería aplicada en packaging" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
@@ -729,6 +761,70 @@
       <img src="assets/amapola-identidad.jpg" alt="Identidad de marca Amapola" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
+    <div class="card reveal" data-cat="flyers" data-title="Style Printed — Mugs personalizados" data-img="assets/flyer-style-printed-mugs.jpg">
+      <img src="assets/flyer-style-printed-mugs.jpg" alt="Style Printed — Mugs personalizados" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Floreria — Medios de pago" data-img="assets/flyer-floreria-medios-pago.jpg">
+      <img src="assets/flyer-floreria-medios-pago.jpg" alt="Floreria — Medios de pago" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Floreria HJR — Aviso de cierre temporal" data-img="assets/flyer-floreria-hjr-cerrado.jpg">
+      <img src="assets/flyer-floreria-hjr-cerrado.jpg" alt="Floreria HJR — Aviso de cierre temporal" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="D'Francesco Pastelería — Un dulce momento" data-img="assets/flyer-dfrancesco-dulce-momento.jpg">
+      <img src="assets/flyer-dfrancesco-dulce-momento.jpg" alt="D'Francesco Pastelería — Un dulce momento" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="VR Nails — Felices Fiestas" data-img="assets/flyer-vr-nails-felices-fiestas.jpg">
+      <img src="assets/flyer-vr-nails-felices-fiestas.jpg" alt="VR Nails — Felices Fiestas" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Mercado Pago — Cartel de alias" data-img="assets/flyer-mercado-pago-alias.jpg">
+      <img src="assets/flyer-mercado-pago-alias.jpg" alt="Mercado Pago — Cartel de alias" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="VR Nails — Tarjeta de agradecimiento navideña" data-img="assets/flyer-vr-nails-agradecimiento.jpg">
+      <img src="assets/flyer-vr-nails-agradecimiento.jpg" alt="VR Nails — Tarjeta de agradecimiento navideña" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Salud Guiada por Expertos — Post de menú" data-img="assets/flyer-salud-guiada-expertos.jpg">
+      <img src="assets/flyer-salud-guiada-expertos.jpg" alt="Salud Guiada por Expertos — Post de menú" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Style Printed — Regala algo único" data-img="assets/flyer-style-printed-regala-algo-unico.jpg">
+      <img src="assets/flyer-style-printed-regala-algo-unico.jpg" alt="Style Printed — Regala algo único" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Invitación Angela Sofía — Encanto" data-img="assets/flyer-angela-sofia-encanto.jpg">
+      <img src="assets/flyer-angela-sofia-encanto.jpg" alt="Invitación Angela Sofía — Encanto" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Invitación Angela Sofía — Hello Kitty" data-img="assets/flyer-angela-sofia-hellokitty.jpg">
+      <img src="assets/flyer-angela-sofia-hellokitty.jpg" alt="Invitación Angela Sofía — Hello Kitty" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Invitación Christopher — Plants vs Zombies" data-img="assets/flyer-christopher-pvz.jpg">
+      <img src="assets/flyer-christopher-pvz.jpg" alt="Invitación Christopher — Plants vs Zombies" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Convocatoria Real — Lucía, temática Frozen" data-img="assets/flyer-lucia-frozen.jpg">
+      <img src="assets/flyer-lucia-frozen.jpg" alt="Convocatoria Real — Lucía, temática Frozen" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Invitación Yennys — 55 años" data-img="assets/flyer-yennys-55.jpg">
+      <img src="assets/flyer-yennys-55.jpg" alt="Invitación Yennys — 55 años" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Invitación José Andrés — Bautizo y primer añito" data-img="assets/flyer-jose-andres-primer-anito.jpg">
+      <img src="assets/flyer-jose-andres-primer-anito.jpg" alt="Invitación José Andrés — Bautizo y primer añito" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <div class="card reveal" data-cat="flyers" data-title="Invitación Juan — Hot Wheels" data-img="assets/flyer-juan-hotwheels.jpg">
+      <img src="assets/flyer-juan-hotwheels.jpg" alt="Invitación Juan — Hot Wheels" loading="lazy" width="500" height="625">
+      <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+    </div>
   </div>
 </section>
 
@@ -746,18 +842,9 @@
     </div>
   </div>
   <div class="about-visual">
-    <svg class="about-badge" viewBox="0 0 300 300" aria-label="Actividad Digital">
-      <circle cx="150" cy="150" r="145" fill="#141414" stroke="#FCD116" stroke-width="6"/>
-      <g transform="translate(72,42) scale(1.85)" fill="none" stroke-linecap="round">
-        <path d="M50 15 C30 15 15 35 15 50" stroke="url(#goldMetal)" stroke-width="6"/>
-        <path d="M50 25 C35 25 25 40 25 55" stroke="url(#blueMetal)" stroke-width="6"/>
-        <path d="M50 35 C42 35 35 45 35 60" stroke="url(#redMetal)" stroke-width="6"/>
-        <path d="M50 15 C70 15 85 35 85 50" stroke="url(#redMetal)" stroke-width="6" opacity=".85"/>
-        <path d="M50 25 C65 25 75 40 75 55" stroke="url(#blueMetal)" stroke-width="6" opacity=".85"/>
-      </g>
-      <text x="150" y="235" text-anchor="middle" font-family="'Fredoka',sans-serif" font-weight="600" font-size="30" fill="#FCD116">Actividad</text>
-      <text x="150" y="265" text-anchor="middle" font-family="'Fredoka',sans-serif" font-weight="600" font-size="30" fill="#FCD116">Digital</text>
-    </svg>
+    <div class="about-badge-card">
+      <img class="about-badge" src="assets/logo-actividad-digital.png" alt="Actividad Digital" width="1080" height="1080" loading="lazy">
+    </div>
   </div>
 </section>
 
