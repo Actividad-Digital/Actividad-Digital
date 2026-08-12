@@ -3,10 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Actividad Digital — Diseño gráfico</title>
+<title>Actividad Digital — Diseño gráfico en Buenos Aires</title>
+<meta name="description" content="Diseño gráfico a medida en Buenos Aires: logotipos, identidad de marca, etiquetas escolares, invitaciones y piezas para redes sociales. Del boceto al archivo final listo para imprenta o Instagram.">
+<meta name="keywords" content="diseño gráfico Buenos Aires, logotipos, identidad de marca, etiquetas escolares, invitaciones personalizadas, diseñadora freelance Argentina">
+<meta name="author" content="Actividad Digital">
+<link rel="canonical" href="https://actividad-digital.github.io/Actividad-Digital/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Actividad Digital">
+<meta property="og:title" content="Actividad Digital — Diseño gráfico en Buenos Aires">
+<meta property="og:description" content="Logotipos, identidad de marca, etiquetas y piezas para redes hechos a medida para tu emprendimiento. Del boceto a los archivos finales listos para usar.">
+<meta property="og:image" content="https://actividad-digital.github.io/Actividad-Digital/assets/saten-style.jpg">
+<meta property="og:url" content="https://actividad-digital.github.io/Actividad-Digital/">
+<meta property="og:locale" content="es_AR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Actividad Digital — Diseño gráfico en Buenos Aires">
+<meta name="twitter:description" content="Logotipos, identidad de marca, etiquetas y piezas para redes hechos a medida para tu emprendimiento.">
+<meta name="twitter:image" content="https://actividad-digital.github.io/Actividad-Digital/assets/saten-style.jpg">
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Actividad Digital",
+  "image": "https://actividad-digital.github.io/Actividad-Digital/assets/saten-style.jpg",
+  "description": "Diseño gráfico a medida: logotipos, identidad de marca, etiquetas escolares, invitaciones y piezas para redes sociales.",
+  "url": "https://actividad-digital.github.io/Actividad-Digital/",
+  "areaServed": {
+    "@type": "City",
+    "name": "Buenos Aires"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "sameAs": [
+    "https://www.instagram.com/actividad.digital"
+  ]
+}
+</script>
 <style>
   :root{
     --ink:#141414;
@@ -361,6 +406,34 @@
     background:var(--whatsapp);
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 8px 24px rgba(0,0,0,.45);
+    animation:wa-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes wa-pulse{
+    0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 0 rgba(37,211,102,.5);}
+    50%{box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 10px rgba(37,211,102,0);}
+  }
+  .wa-bubble{
+    position:fixed;bottom:5.6rem;right:1.6rem;z-index:60;
+    max-width:230px;background:var(--paper);color:var(--ink);
+    border-radius:16px 16px 4px 16px;padding:.9rem 1.1rem;
+    font-family:'Work Sans',sans-serif;font-size:.85rem;line-height:1.4;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    opacity:0;transform:translateY(12px) scale(.94);pointer-events:none;
+    transition:opacity .35s ease,transform .35s ease;
+  }
+  .wa-bubble.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+  .wa-bubble strong{font-family:'Fredoka',sans-serif;font-weight:600;}
+  .wa-bubble .wa-close{
+    position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+    background:var(--card);color:var(--paper);border:2px solid var(--paper);
+    display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:pointer;line-height:1;
+  }
+
+  /* ---------- CUSTOM CURSOR (gold arrow) ---------- */
+  @media(hover:hover) and (pointer:fine){
+    html, body, a, button, .card, .cat-window, input, select, textarea, label{
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2 2 L2 19 L6.5 15 L9.5 22 L12.5 20.7 L9.5 14 L16 14 Z" fill="%23FCD116" stroke="%23141414" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>') 2 2, auto;
+    }
   }
 </style>
 </head>
@@ -369,11 +442,11 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="goldMetal" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFF3B0"/>
+      <stop offset="0%" stop-color="#FFF6C4"/>
       <stop offset="30%" stop-color="#FFD400"/>
-      <stop offset="55%" stop-color="#B8860B"/>
+      <stop offset="55%" stop-color="#E0A800"/>
       <stop offset="75%" stop-color="#FFE873"/>
-      <stop offset="100%" stop-color="#8A6200"/>
+      <stop offset="100%" stop-color="#C68E00"/>
     </linearGradient>
     <linearGradient id="blueMetal" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#7C9CFF"/>
@@ -428,9 +501,9 @@
     <path d="M200 115 C155 115 115 155 115 200" stroke="url(#blueMetal)" stroke-width="10" stroke-linecap="round" opacity=".7"/>
     <path d="M200 140 C170 140 140 170 140 200" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round"/>
     <path d="M200 165 C185 165 165 185 165 210" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round" opacity=".7"/>
-    <path d="M200 40 C290 40 360 110 360 200" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round" opacity=".55"/>
-    <path d="M200 65 C275 65 335 125 335 200" stroke="url(#redMetal)" stroke-width="10" stroke-linecap="round" opacity=".4"/>
-    <path d="M200 90 C260 90 310 140 310 200" stroke="url(#blueMetal)" stroke-width="10" stroke-linecap="round" opacity=".4"/>
+    <path d="M200 40 C290 40 360 110 360 200" stroke="url(#goldMetal)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M200 65 C275 65 335 125 335 200" stroke="url(#goldMetal)" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+    <path d="M200 90 C260 90 310 140 310 200" stroke="url(#blueMetal)" stroke-width="10" stroke-linecap="round"/>
   </svg>
   <div class="hero-inner">
     <p class="eyebrow">Diseños para tu emprendimiento</p>
@@ -493,22 +566,22 @@
 
   <div class="cat-windows" id="catWindows">
     <button class="cat-window" data-filter="logos">
-      <img src="assets/saten-style.jpg" alt="Logos">
+      <img src="assets/saten-style.jpg" alt="Logos" loading="eager" width="300" height="300">
       <span class="cw-label">Logos</span>
     </button>
     <button class="cat-window empty" data-filter="flyers">
       <span class="cw-label">Flyers<br><small style="font-weight:400;">Próximamente</small></span>
     </button>
     <button class="cat-window" data-filter="etiquetas">
-      <img src="assets/dfrancesco.jpg" alt="Etiquetas">
+      <img src="assets/dfrancesco.jpg" alt="Etiquetas" loading="lazy" width="300" height="300">
       <span class="cw-label">Etiquetas</span>
     </button>
     <button class="cat-window" data-filter="mockups">
-      <img src="assets/rachel-sakti-bolsa.jpg" alt="Mockups">
+      <img src="assets/rachel-sakti-bolsa.jpg" alt="Mockups" loading="lazy" width="300" height="300">
       <span class="cw-label">Mockups</span>
     </button>
     <button class="cat-window" data-filter="identidad">
-      <img src="assets/sweet-lotus.jpg" alt="Identidad de marca">
+      <img src="assets/sweet-lotus.jpg" alt="Identidad de marca" loading="lazy" width="300" height="300">
       <span class="cw-label">Identidad de marca</span>
     </button>
   </div>
@@ -519,135 +592,135 @@
     <!-- CARD TEMPLATE: reemplazá el <div class="ph">...</div> por
          <img src="ruta-de-tu-imagen.jpg" style="width:100%;height:100%;object-fit:cover"> -->
     <div class="card reveal" data-cat="logos" data-title="Logotipo Satén Style J&J" data-img="assets/saten-style.jpg">
-      <img src="assets/saten-style.jpg" alt="Logotipo Satén Style J&J" loading="lazy">
+      <img src="assets/saten-style.jpg" alt="Logotipo Satén Style J&J" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo Style Printed" data-img="assets/style-printed.jpg">
-      <img src="assets/style-printed.jpg" alt="Logotipo Style Printed" loading="lazy">
+      <img src="assets/style-printed.jpg" alt="Logotipo Style Printed" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus.jpg">
-      <img src="assets/sweet-lotus.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy">
+      <img src="assets/sweet-lotus.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Logotipo y etiquetas MJO Accesorios" data-img="assets/mjo-accesorios.jpg">
-      <img src="assets/mjo-accesorios.jpg" alt="Logotipo y etiquetas MJO Accesorios" loading="lazy">
+      <img src="assets/mjo-accesorios.jpg" alt="Logotipo y etiquetas MJO Accesorios" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="etiquetas" data-title="Logotipo y etiqueta D'Francesco Pastelería" data-img="assets/dfrancesco.jpg">
-      <img src="assets/dfrancesco.jpg" alt="Logotipo y etiqueta D'Francesco Pastelería" loading="lazy">
+      <img src="assets/dfrancesco.jpg" alt="Logotipo y etiqueta D'Francesco Pastelería" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo Oscar Electricista Domiciliario" data-img="assets/oscar-electricista.jpg">
-      <img src="assets/oscar-electricista.jpg" alt="Logotipo Oscar Electricista Domiciliario" loading="lazy">
+      <img src="assets/oscar-electricista.jpg" alt="Logotipo Oscar Electricista Domiciliario" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo Angela Cakes & Details" data-img="assets/angela-cakes.jpg">
-      <img src="assets/angela-cakes.jpg" alt="Logotipo Angela Cakes & Details" loading="lazy">
+      <img src="assets/angela-cakes.jpg" alt="Logotipo Angela Cakes & Details" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo Amapola" data-img="assets/amapola.jpg">
-      <img src="assets/amapola.jpg" alt="Logotipo Amapola" loading="lazy">
+      <img src="assets/amapola.jpg" alt="Logotipo Amapola" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Rachel & Sakti" data-img="assets/rachel-sakti.jpg">
-      <img src="assets/rachel-sakti.jpg" alt="Identidad de marca Rachel & Sakti" loading="lazy">
+      <img src="assets/rachel-sakti.jpg" alt="Identidad de marca Rachel & Sakti" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo LM Studio cejas y pestañas" data-img="assets/lm-studio.jpg">
-      <img src="assets/lm-studio.jpg" alt="Logotipo LM Studio cejas y pestañas" loading="lazy">
+      <img src="assets/lm-studio.jpg" alt="Logotipo LM Studio cejas y pestañas" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Amapola aplicada en producto" data-img="assets/amapola-mockup.jpg">
-      <img src="assets/amapola-mockup.jpg" alt="Marca Amapola aplicada en producto" loading="lazy">
+      <img src="assets/amapola-mockup.jpg" alt="Marca Amapola aplicada en producto" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Rachel & Sakti aplicada en bolsa" data-img="assets/rachel-sakti-bolsa.jpg">
-      <img src="assets/rachel-sakti-bolsa.jpg" alt="Marca Rachel & Sakti aplicada en bolsa" loading="lazy">
+      <img src="assets/rachel-sakti-bolsa.jpg" alt="Marca Rachel & Sakti aplicada en bolsa" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="etiquetas" data-title="Logotipo Mi Dulce Jireh" data-img="assets/mi-dulce-jireh.jpg">
-      <img src="assets/mi-dulce-jireh.jpg" alt="Logotipo Mi Dulce Jireh" loading="lazy">
+      <img src="assets/mi-dulce-jireh.jpg" alt="Logotipo Mi Dulce Jireh" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo SEI Muebles" data-img="assets/sei-muebles.jpg">
-      <img src="assets/sei-muebles.jpg" alt="Logotipo SEI Muebles" loading="lazy">
+      <img src="assets/sei-muebles.jpg" alt="Logotipo SEI Muebles" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Satén Style aplicada en caja" data-img="assets/saten-style-caja.jpg">
-      <img src="assets/saten-style-caja.jpg" alt="Marca Satén Style aplicada en caja" loading="lazy">
+      <img src="assets/saten-style-caja.jpg" alt="Marca Satén Style aplicada en caja" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Oscar Electricista aplicada en gorra" data-img="assets/oscar-gorra.jpg">
-      <img src="assets/oscar-gorra.jpg" alt="Marca Oscar Electricista aplicada en gorra" loading="lazy">
+      <img src="assets/oscar-gorra.jpg" alt="Marca Oscar Electricista aplicada en gorra" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo MJO Accesorios" data-img="assets/mjo-logo.jpg">
-      <img src="assets/mjo-logo.jpg" alt="Logotipo MJO Accesorios" loading="lazy">
+      <img src="assets/mjo-logo.jpg" alt="Logotipo MJO Accesorios" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo Rachel & Sakti" data-img="assets/rachel-sakti-logo.jpg">
-      <img src="assets/rachel-sakti-logo.jpg" alt="Logotipo Rachel & Sakti" loading="lazy">
+      <img src="assets/rachel-sakti-logo.jpg" alt="Logotipo Rachel & Sakti" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="logos" data-title="Logotipo Yennys Santana" data-img="assets/yennys-santana.jpg">
-      <img src="assets/yennys-santana.jpg" alt="Logotipo Yennys Santana" loading="lazy">
+      <img src="assets/yennys-santana.jpg" alt="Logotipo Yennys Santana" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="etiquetas" data-title="Etiqueta Angela Cakes & Details" data-img="assets/angela-etiqueta.jpg">
-      <img src="assets/angela-etiqueta.jpg" alt="Etiqueta Angela Cakes & Details" loading="lazy">
+      <img src="assets/angela-etiqueta.jpg" alt="Etiqueta Angela Cakes & Details" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="etiquetas" data-title="Etiqueta Angela Cakes & Details aplicada en torta" data-img="assets/angela-etiqueta-mockup.jpg">
-      <img src="assets/angela-etiqueta-mockup.jpg" alt="Etiqueta Angela Cakes & Details aplicada en torta" loading="lazy">
+      <img src="assets/angela-etiqueta-mockup.jpg" alt="Etiqueta Angela Cakes & Details aplicada en torta" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca D'Francesco Pastelería aplicada en packaging" data-img="assets/dfrancesco-mockup.jpg">
-      <img src="assets/dfrancesco-mockup.jpg" alt="Marca D'Francesco Pastelería aplicada en packaging" loading="lazy">
+      <img src="assets/dfrancesco-mockup.jpg" alt="Marca D'Francesco Pastelería aplicada en packaging" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Angela Cakes & Details aplicada en uniforme y packaging" data-img="assets/angela-mockup.jpg">
-      <img src="assets/angela-mockup.jpg" alt="Marca Angela Cakes & Details aplicada en uniforme y packaging" loading="lazy">
+      <img src="assets/angela-mockup.jpg" alt="Marca Angela Cakes & Details aplicada en uniforme y packaging" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Sweet Lotus aplicada en productos y papelería" data-img="assets/sweet-lotus-mockup.jpg">
-      <img src="assets/sweet-lotus-mockup.jpg" alt="Marca Sweet Lotus aplicada en productos y papelería" loading="lazy">
+      <img src="assets/sweet-lotus-mockup.jpg" alt="Marca Sweet Lotus aplicada en productos y papelería" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca LM Studio aplicada en maletín y tarjetas" data-img="assets/lm-studio-mockup.jpg">
-      <img src="assets/lm-studio-mockup.jpg" alt="Marca LM Studio aplicada en maletín y tarjetas" loading="lazy">
+      <img src="assets/lm-studio-mockup.jpg" alt="Marca LM Studio aplicada en maletín y tarjetas" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Mi Dulce Jireh aplicada en envases de producto" data-img="assets/mi-dulce-jireh-mockup.jpg">
-      <img src="assets/mi-dulce-jireh-mockup.jpg" alt="Marca Mi Dulce Jireh aplicada en envases de producto" loading="lazy">
+      <img src="assets/mi-dulce-jireh-mockup.jpg" alt="Marca Mi Dulce Jireh aplicada en envases de producto" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="mockups" data-title="Marca Yennys Santana aplicada en bolsas de regalo" data-img="assets/yennys-santana-mockup.jpg">
-      <img src="assets/yennys-santana-mockup.jpg" alt="Marca Yennys Santana aplicada en bolsas de regalo" loading="lazy">
+      <img src="assets/yennys-santana-mockup.jpg" alt="Marca Yennys Santana aplicada en bolsas de regalo" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Style Printed" data-img="assets/style-printed-identidad.jpg">
-      <img src="assets/style-printed-identidad.jpg" alt="Identidad de marca Style Printed" loading="lazy">
+      <img src="assets/style-printed-identidad.jpg" alt="Identidad de marca Style Printed" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca MJO Accesorios" data-img="assets/mjo-identidad.jpg">
-      <img src="assets/mjo-identidad.jpg" alt="Identidad de marca MJO Accesorios" loading="lazy">
+      <img src="assets/mjo-identidad.jpg" alt="Identidad de marca MJO Accesorios" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Oscar Electricista" data-img="assets/oscar-identidad.jpg">
-      <img src="assets/oscar-identidad.jpg" alt="Identidad de marca Oscar Electricista" loading="lazy">
+      <img src="assets/oscar-identidad.jpg" alt="Identidad de marca Oscar Electricista" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Angela Cakes & Details" data-img="assets/angela-identidad.jpg">
-      <img src="assets/angela-identidad.jpg" alt="Identidad de marca Angela Cakes & Details" loading="lazy">
+      <img src="assets/angela-identidad.jpg" alt="Identidad de marca Angela Cakes & Details" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus-identidad2.jpg">
-      <img src="assets/sweet-lotus-identidad2.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy">
+      <img src="assets/sweet-lotus-identidad2.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
     <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Amapola" data-img="assets/amapola-identidad.jpg">
-      <img src="assets/amapola-identidad.jpg" alt="Identidad de marca Amapola" loading="lazy">
+      <img src="assets/amapola-identidad.jpg" alt="Identidad de marca Amapola" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
   </div>
@@ -691,33 +764,33 @@
   </div>
   <div class="marquee-wrap">
     <div class="marquee-track" id="marqueeTrack">
-      <div class="marquee-item"><img src="assets/saten-style.jpg" alt="Satén Style J&J"></div>
-      <div class="marquee-item"><img src="assets/style-printed.jpg" alt="Style Printed"></div>
-      <div class="marquee-item"><img src="assets/sweet-lotus.jpg" alt="Sweet Lotus"></div>
-      <div class="marquee-item"><img src="assets/mjo-logo.jpg" alt="MJO Accesorios"></div>
-      <div class="marquee-item"><img src="assets/dfrancesco.jpg" alt="D'Francesco Pastelería"></div>
-      <div class="marquee-item"><img src="assets/oscar-electricista.jpg" alt="Oscar Electricista"></div>
-      <div class="marquee-item"><img src="assets/angela-cakes.jpg" alt="Angela Cakes & Details"></div>
-      <div class="marquee-item"><img src="assets/amapola.jpg" alt="Amapola"></div>
-      <div class="marquee-item"><img src="assets/rachel-sakti-logo.jpg" alt="Rachel & Sakti"></div>
-      <div class="marquee-item"><img src="assets/lm-studio.jpg" alt="LM Studio"></div>
-      <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh"></div>
-      <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles"></div>
-      <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana"></div>
+      <div class="marquee-item"><img src="assets/saten-style.jpg" alt="Satén Style J&J" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/style-printed.jpg" alt="Style Printed" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/sweet-lotus.jpg" alt="Sweet Lotus" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/mjo-logo.jpg" alt="MJO Accesorios" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/dfrancesco.jpg" alt="D'Francesco Pastelería" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/oscar-electricista.jpg" alt="Oscar Electricista" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/angela-cakes.jpg" alt="Angela Cakes & Details" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/amapola.jpg" alt="Amapola" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/rachel-sakti-logo.jpg" alt="Rachel & Sakti" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/lm-studio.jpg" alt="LM Studio" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana" loading="lazy" width="130" height="130"></div>
       <!-- duplicado para loop continuo -->
-      <div class="marquee-item"><img src="assets/saten-style.jpg" alt="Satén Style J&J"></div>
-      <div class="marquee-item"><img src="assets/style-printed.jpg" alt="Style Printed"></div>
-      <div class="marquee-item"><img src="assets/sweet-lotus.jpg" alt="Sweet Lotus"></div>
-      <div class="marquee-item"><img src="assets/mjo-logo.jpg" alt="MJO Accesorios"></div>
-      <div class="marquee-item"><img src="assets/dfrancesco.jpg" alt="D'Francesco Pastelería"></div>
-      <div class="marquee-item"><img src="assets/oscar-electricista.jpg" alt="Oscar Electricista"></div>
-      <div class="marquee-item"><img src="assets/angela-cakes.jpg" alt="Angela Cakes & Details"></div>
-      <div class="marquee-item"><img src="assets/amapola.jpg" alt="Amapola"></div>
-      <div class="marquee-item"><img src="assets/rachel-sakti-logo.jpg" alt="Rachel & Sakti"></div>
-      <div class="marquee-item"><img src="assets/lm-studio.jpg" alt="LM Studio"></div>
-      <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh"></div>
-      <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles"></div>
-      <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana"></div>
+      <div class="marquee-item"><img src="assets/saten-style.jpg" alt="Satén Style J&J" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/style-printed.jpg" alt="Style Printed" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/sweet-lotus.jpg" alt="Sweet Lotus" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/mjo-logo.jpg" alt="MJO Accesorios" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/dfrancesco.jpg" alt="D'Francesco Pastelería" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/oscar-electricista.jpg" alt="Oscar Electricista" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/angela-cakes.jpg" alt="Angela Cakes & Details" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/amapola.jpg" alt="Amapola" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/rachel-sakti-logo.jpg" alt="Rachel & Sakti" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/lm-studio.jpg" alt="LM Studio" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles" loading="lazy" width="130" height="130"></div>
+      <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana" loading="lazy" width="130" height="130"></div>
     </div>
   </div>
 </section>
@@ -745,6 +818,16 @@
       <label for="qDetalle">Contame un poco tu idea (opcional)</label>
       <textarea id="qDetalle" rows="3" placeholder="Ej: quiero un logo para mi emprendimiento de repostería, colores pasteles..."></textarea>
     </div>
+    <div>
+      <label for="qPresupuesto">Presupuesto aproximado (opcional)</label>
+      <select id="qPresupuesto">
+        <option value="">Prefiero conversarlo</option>
+        <option value="Hasta $20.000">Hasta $20.000</option>
+        <option value="$20.000 - $50.000">$20.000 - $50.000</option>
+        <option value="$50.000 - $100.000">$50.000 - $100.000</option>
+        <option value="Más de $100.000">Más de $100.000</option>
+      </select>
+    </div>
     <a class="btn btn-primary" id="quoteBtn" href="https://wa.me/5491150609025" target="_blank" style="justify-content:center;">Generar mensaje y enviar por WhatsApp</a>
   </form>
 </section>
@@ -769,6 +852,10 @@
   </div>
 </div>
 
+<div class="wa-bubble" id="waBubble">
+  <span class="wa-close" id="waClose">✕</span>
+  ¡Hola! 👋 <strong>¿Tenés una idea?</strong> Escribime y te cuento cómo la hacemos realidad.
+</div>
 <a class="wa-float" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.06L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.65 0-3.18-.46-4.5-1.26l-.32-.19-3 .78.8-2.93-.21-.32A7.94 7.94 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
 </a>
@@ -856,19 +943,22 @@
   const qNombre = document.getElementById('qNombre');
   const qServicio = document.getElementById('qServicio');
   const qDetalle = document.getElementById('qDetalle');
+  const qPresupuesto = document.getElementById('qPresupuesto');
   const quoteBtn = document.getElementById('quoteBtn');
 
   function buildQuoteMessage(){
     const nombre = qNombre.value.trim();
     const servicio = qServicio.value;
     const detalle = qDetalle.value.trim();
+    const presupuesto = qPresupuesto.value;
     let msg = 'Hola! ';
     msg += nombre ? `Soy ${nombre}. ` : '';
     msg += `Quiero consultar por: ${servicio}.`;
     if(detalle) msg += ` Mi idea: ${detalle}`;
+    if(presupuesto) msg += ` Presupuesto aproximado: ${presupuesto}.`;
     quoteBtn.href = 'https://wa.me/5491150609025?text=' + encodeURIComponent(msg);
   }
-  [qNombre, qServicio, qDetalle].forEach(el=>{
+  [qNombre, qServicio, qDetalle, qPresupuesto].forEach(el=>{
     el.addEventListener('input', buildQuoteMessage);
     el.addEventListener('change', buildQuoteMessage);
   });
@@ -942,10 +1032,29 @@
   document.addEventListener('keydown', (e)=>{
     if(e.key === 'Escape') closeLightbox();
   });
+
+  /* ---------- WHATSAPP WELCOME BUBBLE ---------- */
+  (function(){
+    const bubble = document.getElementById('waBubble');
+    const closeBtn = document.getElementById('waClose');
+    if(!bubble || !closeBtn) return;
+    const DISMISS_KEY = 'ad_wa_bubble_dismissed';
+    let dismissed = false;
+    try{ dismissed = sessionStorage.getItem(DISMISS_KEY) === '1'; }catch(e){}
+    if(!dismissed){
+      setTimeout(()=> bubble.classList.add('show'), 4000);
+    }
+    closeBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      bubble.classList.remove('show');
+      try{ sessionStorage.setItem(DISMISS_KEY, '1'); }catch(e){}
+    });
+  })();
 </script>
 
 </body>
 </html>
+
 
 
 
