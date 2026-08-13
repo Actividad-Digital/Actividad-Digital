@@ -106,12 +106,30 @@
   @media(max-width:900px){ .fingerprint{opacity:.18;right:-20%;} }
 
   .about-badge-card{
-    background:var(--paper);border-radius:50%;padding:2.2rem;
+    position:relative;background:#141414;border-radius:50%;padding:1.1rem;
     display:flex;align-items:center;justify-content:center;
     width:80%;max-width:320px;aspect-ratio:1;
     box-shadow:0 20px 45px rgba(0,0,0,.5);
   }
-  .about-badge{width:100%;height:auto;display:block;}
+  .about-badge-card::before{
+    content:"";position:absolute;inset:-14px;border-radius:50%;
+    background:conic-gradient(from 0deg, transparent 0%, rgba(252,209,22,.55) 8%, transparent 16%, transparent 50%, rgba(252,209,22,.4) 58%, transparent 66%);
+    animation:gold-sparkle-spin 5s linear infinite;pointer-events:none;
+  }
+  .about-badge-card::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    box-shadow:0 0 0 0 rgba(252,209,22,.55);
+    animation:gold-sparkle-pulse 2.6s ease-in-out infinite;pointer-events:none;
+  }
+  @keyframes gold-sparkle-spin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+  }
+  @keyframes gold-sparkle-pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(252,209,22,.5);}
+    50%{box-shadow:0 0 25px 8px rgba(252,209,22,.35);}
+  }
+  .about-badge{width:100%;height:auto;display:block;position:relative;z-index:1;}
   nav a{color:var(--paper);text-decoration:none;opacity:.75;transition:opacity .2s;}
   nav a:hover{opacity:1;}
   .nav-cta{display:none;}
@@ -119,7 +137,7 @@
     display:flex;flex-direction:column;gap:5px;background:none;border:none;
     cursor:pointer;padding:.4rem;z-index:60;
   }
-  .burger span{width:24px;height:2px;background:var(--paper);border-radius:2px;transition:all .25s ease;}
+  .burger span{width:24px;height:2px;background:var(--yellow);border-radius:2px;transition:all .25s ease;}
   .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
   .burger.open span:nth-child(2){opacity:0;}
   .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -310,6 +328,31 @@
   }
   .filter-btn:hover{background:var(--paper);color:var(--ink);border-color:var(--yellow);}
   .filter-btn.active{background:var(--paper);color:var(--ink);border-color:var(--yellow);}
+
+  .filter-btn[data-filter="escolar"]:hover,
+  .filter-btn[data-filter="escolar"].active{
+    background:var(--yellow);color:var(--ink);border-color:var(--yellow);
+  }
+  .filter-btn[data-filter="branding"]:hover,
+  .filter-btn[data-filter="branding"].active{
+    background:var(--blue);color:var(--paper);border-color:var(--blue);
+  }
+  .filter-btn[data-filter="invitaciones"]:hover,
+  .filter-btn[data-filter="invitaciones"].active{
+    background:var(--red);color:var(--paper);border-color:var(--red);
+  }
+
+  .subfilters{
+    display:none;flex-wrap:wrap;gap:.6rem;margin:-.5rem 0 1.6rem;
+  }
+  .subfilters.show{display:flex;}
+  .subfilter-btn{
+    font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.03em;
+    padding:.4rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);
+    background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;
+  }
+  .subfilter-btn:hover{border-color:var(--yellow);color:var(--paper);}
+  .subfilter-btn.active{background:var(--yellow);color:var(--ink);border-color:var(--yellow);}
 
   /* ---------- GRID ---------- */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
@@ -525,11 +568,9 @@
     <li class="has-sub">
       <button class="sub-toggle" id="portfolioToggle">Portfolio <span class="chev">▾</span></button>
       <ul class="submenu" id="portfolioSubmenu">
-        <li><a href="#portfolio" data-filter="logos">Logos</a></li>
-        <li><a href="#portfolio" data-filter="flyers">Flyers/Post</a></li>
-        <li><a href="#portfolio" data-filter="etiquetas">Etiquetas</a></li>
-        <li><a href="#portfolio" data-filter="mockups">Mockups</a></li>
-        <li><a href="#portfolio" data-filter="identidad">Identidad de marca</a></li>
+        <li><a href="#portfolio" data-filter="escolar">Etiquetas Escolares & Papelería</a></li>
+        <li><a href="#portfolio" data-filter="branding">Branding & Publicidad</a></li>
+        <li><a href="#portfolio" data-filter="invitaciones">Invitaciones & Fiestas</a></li>
       </ul>
     </li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -648,33 +689,32 @@
   </div>
 
   <div class="filters" id="filterLinks">
-    <button class="filter-btn" data-filter="logos">Logos</button>
-    <button class="filter-btn" data-filter="flyers">Flyers/Post</button>
-    <button class="filter-btn" data-filter="etiquetas">Etiquetas</button>
-    <button class="filter-btn" data-filter="mockups">Mockups</button>
-    <button class="filter-btn" data-filter="identidad">Identidad de marca</button>
+    <button class="filter-btn" data-filter="escolar">Etiquetas Escolares & Papelería</button>
+    <button class="filter-btn" data-filter="branding">Branding & Publicidad</button>
+    <button class="filter-btn" data-filter="invitaciones">Invitaciones & Fiestas</button>
+  </div>
+
+  <div class="subfilters" id="subFilters">
+    <button class="subfilter-btn active" data-subfilter="all">Todo</button>
+    <button class="subfilter-btn" data-subfilter="logos">Logos</button>
+    <button class="subfilter-btn" data-subfilter="identidad">Identidad</button>
+    <button class="subfilter-btn" data-subfilter="mockups">Mockups</button>
+    <button class="subfilter-btn" data-subfilter="etiquetas">Etiquetas de producto</button>
+    <button class="subfilter-btn" data-subfilter="posts">Posts</button>
   </div>
 
   <div class="cat-windows" id="catWindows">
-    <button class="cat-window" data-filter="logos">
-      <img src="assets/saten-style.jpg" alt="Logos" loading="eager" width="300" height="300">
-      <span class="cw-label">Logos</span>
+    <button class="cat-window" data-filter="escolar">
+      <img src="assets/etiqueta-separador-portada-juan.jpg" alt="Etiquetas Escolares & Papelería" loading="eager" width="300" height="300">
+      <span class="cw-label">Etiquetas Escolares & Papelería</span>
     </button>
-    <button class="cat-window" data-filter="flyers">
-      <img src="assets/flyer-style-printed-regala-algo-unico.jpg" alt="Flyers/Post" loading="lazy" width="300" height="300">
-      <span class="cw-label">Flyers/Post</span>
+    <button class="cat-window" data-filter="branding">
+      <img src="assets/saten-style.jpg" alt="Branding & Publicidad" loading="lazy" width="300" height="300">
+      <span class="cw-label">Branding & Publicidad</span>
     </button>
-    <button class="cat-window" data-filter="etiquetas">
-      <img src="assets/dfrancesco.jpg" alt="Etiquetas" loading="lazy" width="300" height="300">
-      <span class="cw-label">Etiquetas</span>
-    </button>
-    <button class="cat-window" data-filter="mockups">
-      <img src="assets/rachel-sakti-bolsa.jpg" alt="Mockups" loading="lazy" width="300" height="300">
-      <span class="cw-label">Mockups</span>
-    </button>
-    <button class="cat-window" data-filter="identidad">
-      <img src="assets/sweet-lotus.jpg" alt="Identidad de marca" loading="lazy" width="300" height="300">
-      <span class="cw-label">Identidad de marca</span>
+    <button class="cat-window" data-filter="invitaciones">
+      <img src="assets/flyer-yennys-55.jpg" alt="Invitaciones & Fiestas" loading="lazy" width="300" height="300">
+      <span class="cw-label">Invitaciones & Fiestas</span>
     </button>
   </div>
 
@@ -683,227 +723,227 @@
   <div class="grid" id="grid">
     <!-- CARD TEMPLATE: reemplazá el <div class="ph">...</div> por
          <img src="ruta-de-tu-imagen.jpg" style="width:100%;height:100%;object-fit:cover"> -->
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Satén Style J&J" data-img="assets/saten-style.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Satén Style J&J" data-img="assets/saten-style.jpg">
       <img src="assets/saten-style.jpg" alt="Logotipo Satén Style J&J" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Style Printed" data-img="assets/style-printed.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Style Printed" data-img="assets/style-printed.jpg">
       <img src="assets/style-printed.jpg" alt="Logotipo Style Printed" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus.jpg">
       <img src="assets/sweet-lotus.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Logotipo y etiquetas MJO Accesorios" data-img="assets/mjo-accesorios.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Logotipo y etiquetas MJO Accesorios" data-img="assets/mjo-accesorios.jpg">
       <img src="assets/mjo-accesorios.jpg" alt="Logotipo y etiquetas MJO Accesorios" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Logotipo y etiqueta D'Francesco Pastelería" data-img="assets/dfrancesco.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="etiquetas" data-title="Logotipo y etiqueta D'Francesco Pastelería" data-img="assets/dfrancesco.jpg">
       <img src="assets/dfrancesco.jpg" alt="Logotipo y etiqueta D'Francesco Pastelería" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Oscar Electricista Domiciliario" data-img="assets/oscar-electricista.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Oscar Electricista Domiciliario" data-img="assets/oscar-electricista.jpg">
       <img src="assets/oscar-electricista.jpg" alt="Logotipo Oscar Electricista Domiciliario" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Angela Cakes & Details" data-img="assets/angela-cakes.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Angela Cakes & Details" data-img="assets/angela-cakes.jpg">
       <img src="assets/angela-cakes.jpg" alt="Logotipo Angela Cakes & Details" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Amapola" data-img="assets/amapola.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Amapola" data-img="assets/amapola.jpg">
       <img src="assets/amapola.jpg" alt="Logotipo Amapola" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Rachel & Sakti" data-img="assets/rachel-sakti.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Rachel & Sakti" data-img="assets/rachel-sakti.jpg">
       <img src="assets/rachel-sakti.jpg" alt="Identidad de marca Rachel & Sakti" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo LM Studio cejas y pestañas" data-img="assets/lm-studio.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo LM Studio cejas y pestañas" data-img="assets/lm-studio.jpg">
       <img src="assets/lm-studio.jpg" alt="Logotipo LM Studio cejas y pestañas" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Amapola aplicada en producto" data-img="assets/amapola-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Amapola aplicada en producto" data-img="assets/amapola-mockup.jpg">
       <img src="assets/amapola-mockup.jpg" alt="Marca Amapola aplicada en producto" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Rachel & Sakti aplicada en bolsa" data-img="assets/rachel-sakti-bolsa.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Rachel & Sakti aplicada en bolsa" data-img="assets/rachel-sakti-bolsa.jpg">
       <img src="assets/rachel-sakti-bolsa.jpg" alt="Marca Rachel & Sakti aplicada en bolsa" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Logotipo Mi Dulce Jireh" data-img="assets/mi-dulce-jireh.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="etiquetas" data-title="Logotipo Mi Dulce Jireh" data-img="assets/mi-dulce-jireh.jpg">
       <img src="assets/mi-dulce-jireh.jpg" alt="Logotipo Mi Dulce Jireh" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo SEI Muebles" data-img="assets/sei-muebles.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo SEI Muebles" data-img="assets/sei-muebles.jpg">
       <img src="assets/sei-muebles.jpg" alt="Logotipo SEI Muebles" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Satén Style aplicada en caja" data-img="assets/saten-style-caja.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Satén Style aplicada en caja" data-img="assets/saten-style-caja.jpg">
       <img src="assets/saten-style-caja.jpg" alt="Marca Satén Style aplicada en caja" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Oscar Electricista aplicada en gorra" data-img="assets/oscar-gorra.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Oscar Electricista aplicada en gorra" data-img="assets/oscar-gorra.jpg">
       <img src="assets/oscar-gorra.jpg" alt="Marca Oscar Electricista aplicada en gorra" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo MJO Accesorios" data-img="assets/mjo-logo.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo MJO Accesorios" data-img="assets/mjo-logo.jpg">
       <img src="assets/mjo-logo.jpg" alt="Logotipo MJO Accesorios" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Rachel & Sakti" data-img="assets/rachel-sakti-logo.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Rachel & Sakti" data-img="assets/rachel-sakti-logo.jpg">
       <img src="assets/rachel-sakti-logo.jpg" alt="Logotipo Rachel & Sakti" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="logos" data-title="Logotipo Yennys Santana" data-img="assets/yennys-santana.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="logos" data-title="Logotipo Yennys Santana" data-img="assets/yennys-santana.jpg">
       <img src="assets/yennys-santana.jpg" alt="Logotipo Yennys Santana" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Etiqueta Angela Cakes & Details" data-img="assets/angela-etiqueta.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="etiquetas" data-title="Etiqueta Angela Cakes & Details" data-img="assets/angela-etiqueta.jpg">
       <img src="assets/angela-etiqueta.jpg" alt="Etiqueta Angela Cakes & Details" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Etiqueta Angela Cakes & Details aplicada en torta" data-img="assets/angela-etiqueta-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="etiquetas" data-title="Etiqueta Angela Cakes & Details aplicada en torta" data-img="assets/angela-etiqueta-mockup.jpg">
       <img src="assets/angela-etiqueta-mockup.jpg" alt="Etiqueta Angela Cakes & Details aplicada en torta" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Matemática" data-img="assets/etiqueta-separador-matematica-1.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Separador escolar Matemática" data-img="assets/etiqueta-separador-matematica-1.jpg">
       <img src="assets/etiqueta-separador-matematica-1.jpg" alt="Separador escolar Matemática" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Matemática, variante" data-img="assets/etiqueta-separador-matematica-2.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Separador escolar Matemática, variante" data-img="assets/etiqueta-separador-matematica-2.jpg">
       <img src="assets/etiqueta-separador-matematica-2.jpg" alt="Separador escolar Matemática, variante" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Lenguaje" data-img="assets/etiqueta-separador-lenguaje.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Separador escolar Lenguaje" data-img="assets/etiqueta-separador-lenguaje.jpg">
       <img src="assets/etiqueta-separador-lenguaje.jpg" alt="Separador escolar Lenguaje" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Lengua y Literatura" data-img="assets/etiqueta-separador-lengua-literatura.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Separador escolar Lengua y Literatura" data-img="assets/etiqueta-separador-lengua-literatura.jpg">
       <img src="assets/etiqueta-separador-lengua-literatura.jpg" alt="Separador escolar Lengua y Literatura" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Ciencias Naturales" data-img="assets/etiqueta-separador-ciencias-naturales-1.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Separador escolar Ciencias Naturales" data-img="assets/etiqueta-separador-ciencias-naturales-1.jpg">
       <img src="assets/etiqueta-separador-ciencias-naturales-1.jpg" alt="Separador escolar Ciencias Naturales" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Separador escolar Ciencias Sociales" data-img="assets/etiqueta-separador-ciencias-sociales.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Separador escolar Ciencias Sociales" data-img="assets/etiqueta-separador-ciencias-sociales.jpg">
       <img src="assets/etiqueta-separador-ciencias-sociales.jpg" alt="Separador escolar Ciencias Sociales" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="etiquetas" data-title="Portada personalizada de carpeta escolar" data-img="assets/etiqueta-separador-portada-juan.jpg">
+    <div class="card reveal" data-cat="escolar" data-title="Portada personalizada de carpeta escolar" data-img="assets/etiqueta-separador-portada-juan.jpg">
       <img src="assets/etiqueta-separador-portada-juan.jpg" alt="Portada personalizada de carpeta escolar" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca D'Francesco Pastelería aplicada en packaging" data-img="assets/dfrancesco-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca D'Francesco Pastelería aplicada en packaging" data-img="assets/dfrancesco-mockup.jpg">
       <img src="assets/dfrancesco-mockup.jpg" alt="Marca D'Francesco Pastelería aplicada en packaging" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Angela Cakes & Details aplicada en uniforme y packaging" data-img="assets/angela-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Angela Cakes & Details aplicada en uniforme y packaging" data-img="assets/angela-mockup.jpg">
       <img src="assets/angela-mockup.jpg" alt="Marca Angela Cakes & Details aplicada en uniforme y packaging" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Sweet Lotus aplicada en productos y papelería" data-img="assets/sweet-lotus-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Sweet Lotus aplicada en productos y papelería" data-img="assets/sweet-lotus-mockup.jpg">
       <img src="assets/sweet-lotus-mockup.jpg" alt="Marca Sweet Lotus aplicada en productos y papelería" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca LM Studio aplicada en maletín y tarjetas" data-img="assets/lm-studio-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca LM Studio aplicada en maletín y tarjetas" data-img="assets/lm-studio-mockup.jpg">
       <img src="assets/lm-studio-mockup.jpg" alt="Marca LM Studio aplicada en maletín y tarjetas" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Mi Dulce Jireh aplicada en envases de producto" data-img="assets/mi-dulce-jireh-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Mi Dulce Jireh aplicada en envases de producto" data-img="assets/mi-dulce-jireh-mockup.jpg">
       <img src="assets/mi-dulce-jireh-mockup.jpg" alt="Marca Mi Dulce Jireh aplicada en envases de producto" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="mockups" data-title="Marca Yennys Santana aplicada en bolsas de regalo" data-img="assets/yennys-santana-mockup.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="mockups" data-title="Marca Yennys Santana aplicada en bolsas de regalo" data-img="assets/yennys-santana-mockup.jpg">
       <img src="assets/yennys-santana-mockup.jpg" alt="Marca Yennys Santana aplicada en bolsas de regalo" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Style Printed" data-img="assets/style-printed-identidad.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Style Printed" data-img="assets/style-printed-identidad.jpg">
       <img src="assets/style-printed-identidad.jpg" alt="Identidad de marca Style Printed" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca MJO Accesorios" data-img="assets/mjo-identidad.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca MJO Accesorios" data-img="assets/mjo-identidad.jpg">
       <img src="assets/mjo-identidad.jpg" alt="Identidad de marca MJO Accesorios" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Oscar Electricista" data-img="assets/oscar-identidad.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Oscar Electricista" data-img="assets/oscar-identidad.jpg">
       <img src="assets/oscar-identidad.jpg" alt="Identidad de marca Oscar Electricista" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Angela Cakes & Details" data-img="assets/angela-identidad.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Angela Cakes & Details" data-img="assets/angela-identidad.jpg">
       <img src="assets/angela-identidad.jpg" alt="Identidad de marca Angela Cakes & Details" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus-identidad2.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Sweet Lotus" data-img="assets/sweet-lotus-identidad2.jpg">
       <img src="assets/sweet-lotus-identidad2.jpg" alt="Identidad de marca Sweet Lotus" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="identidad" data-title="Identidad de marca Amapola" data-img="assets/amapola-identidad.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="identidad" data-title="Identidad de marca Amapola" data-img="assets/amapola-identidad.jpg">
       <img src="assets/amapola-identidad.jpg" alt="Identidad de marca Amapola" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Style Printed — Mugs personalizados" data-img="assets/flyer-style-printed-mugs.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="Style Printed — Mugs personalizados" data-img="assets/flyer-style-printed-mugs.jpg">
       <img src="assets/flyer-style-printed-mugs.jpg" alt="Style Printed — Mugs personalizados" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Floreria — Medios de pago" data-img="assets/flyer-floreria-medios-pago.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="Floreria — Medios de pago" data-img="assets/flyer-floreria-medios-pago.jpg">
       <img src="assets/flyer-floreria-medios-pago.jpg" alt="Floreria — Medios de pago" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Floreria HJR — Aviso de cierre temporal" data-img="assets/flyer-floreria-hjr-cerrado.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="Floreria HJR — Aviso de cierre temporal" data-img="assets/flyer-floreria-hjr-cerrado.jpg">
       <img src="assets/flyer-floreria-hjr-cerrado.jpg" alt="Floreria HJR — Aviso de cierre temporal" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="D'Francesco Pastelería — Un dulce momento" data-img="assets/flyer-dfrancesco-dulce-momento.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="D'Francesco Pastelería — Un dulce momento" data-img="assets/flyer-dfrancesco-dulce-momento.jpg">
       <img src="assets/flyer-dfrancesco-dulce-momento.jpg" alt="D'Francesco Pastelería — Un dulce momento" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="VR Nails — Felices Fiestas" data-img="assets/flyer-vr-nails-felices-fiestas.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="VR Nails — Felices Fiestas" data-img="assets/flyer-vr-nails-felices-fiestas.jpg">
       <img src="assets/flyer-vr-nails-felices-fiestas.jpg" alt="VR Nails — Felices Fiestas" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Mercado Pago — Cartel de alias" data-img="assets/flyer-mercado-pago-alias.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="Mercado Pago — Cartel de alias" data-img="assets/flyer-mercado-pago-alias.jpg">
       <img src="assets/flyer-mercado-pago-alias.jpg" alt="Mercado Pago — Cartel de alias" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="VR Nails — Tarjeta de agradecimiento navideña" data-img="assets/flyer-vr-nails-agradecimiento.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="VR Nails — Tarjeta de agradecimiento navideña" data-img="assets/flyer-vr-nails-agradecimiento.jpg">
       <img src="assets/flyer-vr-nails-agradecimiento.jpg" alt="VR Nails — Tarjeta de agradecimiento navideña" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Salud Guiada por Expertos — Post de menú" data-img="assets/flyer-salud-guiada-expertos.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="Salud Guiada por Expertos — Post de menú" data-img="assets/flyer-salud-guiada-expertos.jpg">
       <img src="assets/flyer-salud-guiada-expertos.jpg" alt="Salud Guiada por Expertos — Post de menú" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Style Printed — Regala algo único" data-img="assets/flyer-style-printed-regala-algo-unico.jpg">
+    <div class="card reveal" data-cat="branding" data-subcat="posts" data-title="Style Printed — Regala algo único" data-img="assets/flyer-style-printed-regala-algo-unico.jpg">
       <img src="assets/flyer-style-printed-regala-algo-unico.jpg" alt="Style Printed — Regala algo único" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Invitación Angela Sofía — Encanto" data-img="assets/flyer-angela-sofia-encanto.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Invitación Angela Sofía — Encanto" data-img="assets/flyer-angela-sofia-encanto.jpg">
       <img src="assets/flyer-angela-sofia-encanto.jpg" alt="Invitación Angela Sofía — Encanto" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Invitación Angela Sofía — Hello Kitty" data-img="assets/flyer-angela-sofia-hellokitty.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Invitación Angela Sofía — Hello Kitty" data-img="assets/flyer-angela-sofia-hellokitty.jpg">
       <img src="assets/flyer-angela-sofia-hellokitty.jpg" alt="Invitación Angela Sofía — Hello Kitty" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Invitación Christopher — Plants vs Zombies" data-img="assets/flyer-christopher-pvz.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Invitación Christopher — Plants vs Zombies" data-img="assets/flyer-christopher-pvz.jpg">
       <img src="assets/flyer-christopher-pvz.jpg" alt="Invitación Christopher — Plants vs Zombies" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Convocatoria Real — Lucía, temática Frozen" data-img="assets/flyer-lucia-frozen.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Convocatoria Real — Lucía, temática Frozen" data-img="assets/flyer-lucia-frozen.jpg">
       <img src="assets/flyer-lucia-frozen.jpg" alt="Convocatoria Real — Lucía, temática Frozen" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Invitación Yennys — 55 años" data-img="assets/flyer-yennys-55.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Invitación Yennys — 55 años" data-img="assets/flyer-yennys-55.jpg">
       <img src="assets/flyer-yennys-55.jpg" alt="Invitación Yennys — 55 años" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Invitación José Andrés — Bautizo y primer añito" data-img="assets/flyer-jose-andres-primer-anito.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Invitación José Andrés — Bautizo y primer añito" data-img="assets/flyer-jose-andres-primer-anito.jpg">
       <img src="assets/flyer-jose-andres-primer-anito.jpg" alt="Invitación José Andrés — Bautizo y primer añito" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
-    <div class="card reveal" data-cat="flyers" data-title="Invitación Juan — Hot Wheels" data-img="assets/flyer-juan-hotwheels.jpg">
+    <div class="card reveal" data-cat="invitaciones" data-title="Invitación Juan — Hot Wheels" data-img="assets/flyer-juan-hotwheels.jpg">
       <img src="assets/flyer-juan-hotwheels.jpg" alt="Invitación Juan — Hot Wheels" loading="lazy" width="500" height="625">
       <div class="overlay"><div class="expand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6.5" stroke="#141414" stroke-width="1.8"/><path d="M20 20l-4.8-4.8" stroke="#141414" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
     </div>
@@ -1074,9 +1114,21 @@
 
   const catWindows = document.querySelectorAll('.cat-window[data-filter]:not(.empty)');
   const filterLinks = document.querySelectorAll('.filter-btn[data-filter]');
+  const subFilterBtns = document.querySelectorAll('.subfilter-btn');
+  const subFiltersRow = document.getElementById('subFilters');
   const cards = document.querySelectorAll('.card');
   const resultsLabel = document.getElementById('resultsLabel');
-  const catNames = {logos:'Logos', etiquetas:'Etiquetas', mockups:'Mockups', identidad:'Identidad de marca'};
+  const catNames = {
+    escolar:'Etiquetas Escolares & Papelería',
+    branding:'Branding & Publicidad',
+    invitaciones:'Invitaciones & Fiestas'
+  };
+  const subcatNames = {
+    logos:'Logos', identidad:'Identidad', mockups:'Mockups',
+    etiquetas:'Etiquetas de producto', posts:'Posts'
+  };
+
+  let activeSubcat = 'all';
 
   function clearActive(){
     catWindows.forEach(w=>w.classList.remove('active'));
@@ -1085,6 +1137,10 @@
   function setActive(filter){
     catWindows.forEach(w=>{ if(w.dataset.filter===filter) w.classList.add('active'); });
     filterLinks.forEach(l=>{ if(l.dataset.filter===filter) l.classList.add('active'); });
+  }
+  function setActiveSubcat(sub){
+    activeSubcat = sub;
+    subFilterBtns.forEach(b=>b.classList.toggle('active', b.dataset.subfilter===sub));
   }
 
   function showSamples(){
@@ -1097,13 +1153,25 @@
     cards.forEach(c=>{ c.style.display = picks.has(c) ? 'block' : 'none'; });
     resultsLabel.textContent = 'Muestras';
     clearActive();
+    subFiltersRow.classList.remove('show');
+    setActiveSubcat('all');
+  }
+
+  function applySubcatFilter(filter){
+    cards.forEach(c=>{
+      const inCat = c.dataset.cat === filter;
+      const inSub = activeSubcat === 'all' || c.dataset.subcat === activeSubcat;
+      c.style.display = (inCat && inSub) ? 'block' : 'none';
+    });
   }
 
   function showCategory(filter){
-    cards.forEach(c=>{ c.style.display = (c.dataset.cat === filter) ? 'block' : 'none'; });
+    setActiveSubcat('all');
+    applySubcatFilter(filter);
     resultsLabel.textContent = catNames[filter] || filter;
     clearActive();
     setActive(filter);
+    subFiltersRow.classList.toggle('show', filter === 'branding');
   }
 
   function handleClick(filter, el){
@@ -1116,6 +1184,15 @@
   });
   filterLinks.forEach(link=>{
     link.addEventListener('click', ()=> handleClick(link.dataset.filter, link));
+  });
+  subFilterBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      setActiveSubcat(btn.dataset.subfilter);
+      applySubcatFilter('branding');
+      resultsLabel.textContent = btn.dataset.subfilter === 'all'
+        ? catNames.branding
+        : `${catNames.branding} · ${subcatNames[btn.dataset.subfilter]}`;
+    });
   });
 
   showSamples();
@@ -1251,6 +1328,7 @@
 
 </body>
 </html>
+
 
 
 
