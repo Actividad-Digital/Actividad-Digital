@@ -218,6 +218,44 @@
 
 
 
+  /* ---------- FAQ ACCORDION ---------- */
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.12);}
+  .faq-question{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    background:none;border:none;cursor:pointer;text-align:left;
+    padding:1.3rem 0;font-family:'Fredoka',sans-serif;font-size:1.05rem;color:var(--paper);
+  }
+  .faq-icon{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--yellow);color:var(--yellow);font-size:1.1rem;line-height:1;
+    transition:transform .3s ease,background .3s ease,color .3s ease;
+  }
+  .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--yellow);color:var(--ink);}
+  .faq-answer{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+  }
+  .faq-answer p{color:#B8B6B0;font-size:.95rem;line-height:1.7;padding-bottom:1.3rem;padding-right:2.5rem;}
+  .faq-item.open .faq-answer{max-height:220px;}
+
+  /* ---------- BACK TO TOP ---------- */
+  .back-to-top{
+    position:fixed;bottom:1.6rem;left:1.6rem;z-index:60;
+    width:48px;height:48px;border-radius:50%;
+    background:var(--card);border:1px solid rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    opacity:0;pointer-events:none;transform:translateY(10px);
+    transition:opacity .3s ease,transform .3s ease,border-color .2s ease;
+  }
+  .back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .back-to-top:hover{border-color:var(--yellow);}
+  .back-to-top svg{transition:transform .2s ease;}
+  .back-to-top:hover svg{transform:translateY(-2px);}
+
+  /* ---------- CATEGORY COUNTS ---------- */
+  .cat-count{opacity:.65;font-size:.85em;margin-left:.3em;}
+
   /* ---------- SECTION LABELS ---------- */
   .section{padding:7rem 6vw;}
   .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap;}
@@ -986,7 +1024,7 @@
   </div>
   <div class="about-visual">
     <div class="about-badge-card">
-      <img class="about-badge" src="assets/logo-actividad-digital.png" alt="Actividad Digital" width="1080" height="1080" loading="lazy">
+      <img class="about-badge" src="assets/logo-actividad-digital.png?v=2" alt="Actividad Digital" width="1080" height="1080" loading="lazy">
       <span class="sparkle-dot"></span>
       <span class="sparkle-dot"></span>
       <span class="sparkle-dot"></span>
@@ -1044,6 +1082,62 @@
       <div class="marquee-item"><img src="assets/mi-dulce-jireh.jpg" alt="Mi Dulce Jireh" loading="lazy" width="130" height="130"></div>
       <div class="marquee-item"><img src="assets/sei-muebles.jpg" alt="SEI Muebles" loading="lazy" width="130" height="130"></div>
       <div class="marquee-item"><img src="assets/yennys-santana.jpg" alt="Yennys Santana" loading="lazy" width="130" height="130"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq reveal" id="faq">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Dudas frecuentes</p>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">Preguntas frecuentes</h2>
+    </div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>¿Cuánto tarda un pedido?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Depende del proyecto: una etiqueta o pieza simple puede estar en 24–48hs, mientras que una identidad de marca completa lleva más idas y vueltas. Te doy un tiempo estimado apenas hablamos por WhatsApp.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>¿Cuántas correcciones incluye?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Trabajamos con rondas de ajustes hasta que el diseño te cierre del todo. Lo importante es que me digas con claridad qué cambiarías — cuanto más específico el feedback, más rápido llegamos al resultado final.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>¿Cómo se paga?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Por transferencia o Mercado Pago. Coordinamos la forma de pago directo por WhatsApp una vez que definimos el alcance del proyecto.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>¿Entregás los archivos editables?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Te entrego los archivos finales listos para imprenta o redes (PDF, PNG, JPG). Si necesitás el archivo editable (Canva, Illustrator, Photoshop), avisame antes para coordinarlo.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>¿Hacés trabajos fuera de Buenos Aires?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Sí, todo el proceso es a distancia por WhatsApp, así que puedo trabajar con clientes de cualquier lugar. La entrega de archivos es siempre digital.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1109,6 +1203,10 @@
   <span class="wa-close" id="waClose">✕</span>
   ¡Hola! 👋 <strong>¿Tenés una idea?</strong> Escribime y te cuento cómo la hacemos realidad.
 </div>
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="#FCD116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
 <div class="wa-float">
   <span class="wa-float-ring"></span>
   <a class="wa-float-btn" href="https://wa.me/5491150609025?text=Hola!%20quiero%20consultar%20por%20un%20dise%C3%B1o" target="_blank" aria-label="WhatsApp">
@@ -1337,6 +1435,47 @@
     });
   });
 
+  /* ---------- FAQ ACCORDION ---------- */
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const btn = item.querySelector('.faq-question');
+    btn.addEventListener('click', ()=>{
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=> o.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---------- BACK TO TOP ---------- */
+  (function(){
+    const btn = document.getElementById('backToTop');
+    if(!btn) return;
+    window.addEventListener('scroll', ()=>{
+      btn.classList.toggle('show', window.scrollY > 700);
+    });
+    btn.addEventListener('click', ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  })();
+
+  /* ---------- CATEGORY COUNTS ---------- */
+  (function(){
+    const allCards = document.querySelectorAll('.card');
+    const counts = {};
+    allCards.forEach(c=>{
+      const cat = c.dataset.cat;
+      counts[cat] = (counts[cat]||0) + 1;
+    });
+    document.querySelectorAll('.filter-btn[data-filter]').forEach(btn=>{
+      const n = counts[btn.dataset.filter] || 0;
+      btn.innerHTML = btn.textContent + ` <span class="cat-count">(${n})</span>`;
+    });
+    document.querySelectorAll('.cat-window[data-filter] .cw-label').forEach(label=>{
+      const win = label.closest('.cat-window');
+      const n = counts[win.dataset.filter] || 0;
+      label.innerHTML = label.textContent + ` <span class="cat-count">(${n})</span>`;
+    });
+  })();
+
   /* ---------- WHATSAPP WELCOME BUBBLE ---------- */
   (function(){
     const bubble = document.getElementById('waBubble');
@@ -1358,15 +1497,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
