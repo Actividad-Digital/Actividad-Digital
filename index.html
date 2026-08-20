@@ -218,6 +218,29 @@
 
 
 
+  /* ---------- PROCESS STEPS ---------- */
+  .process-steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;
+  }
+  @media(max-width:900px){.process-steps{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.process-steps{grid-template-columns:1fr;}}
+  .process-step{
+    background:var(--card);border-radius:18px;padding:1.8rem 1.5rem;
+    border:1px solid rgba(255,255,255,.06);position:relative;
+  }
+  .process-num{
+    width:38px;height:38px;border-radius:50%;background:var(--yellow);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:1rem;
+  }
+  .process-step h3{font-family:'Fredoka',sans-serif;font-size:1.05rem;color:var(--paper);margin-bottom:.5rem;}
+  .process-step p{color:#B8B6B0;font-size:.88rem;line-height:1.6;}
+  .process-step:not(:last-child)::after{
+    content:"";position:absolute;top:2.5rem;right:-1.1rem;width:1.6rem;height:2px;
+    background:rgba(255,255,255,.15);
+  }
+  @media(max-width:900px){.process-step:not(:last-child)::after{display:none;}}
+
   /* ---------- FAQ ACCORDION ---------- */
   .faq-list{max-width:760px;}
   .faq-item{border-bottom:1px solid rgba(255,255,255,.12);}
@@ -1035,6 +1058,37 @@
   </div>
 </section>
 
+<section class="section process reveal" id="proceso">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);">Del mensaje al archivo final</h2>
+    </div>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="process-num">1</div>
+      <h3>Me contás tu idea</h3>
+      <p>Me escribís por WhatsApp o completás el formulario del sitio contándome qué necesitás y qué estilo te gusta.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-num">2</div>
+      <h3>Te muestro 2 propuestas</h3>
+      <p>Armo dos direcciones de diseño distintas para que elijas la que más se acerca a lo que imaginabas.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-num">3</div>
+      <h3>Ajustamos juntos</h3>
+      <p>Sobre la propuesta elegida, trabajamos hasta 3 rondas de correcciones hasta que quede como querías.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-num">4</div>
+      <h3>Te entrego los archivos</h3>
+      <p>Recibís todo listo para imprenta o redes, con manual de uso cuando aplica.</p>
+    </div>
+  </div>
+</section>
+
 <section class="stats reveal">
   <div>
     <div class="stat-num" data-count="13">0</div>
@@ -1100,16 +1154,16 @@
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Depende del proyecto: una etiqueta o pieza simple puede estar en 24–48hs, mientras que una identidad de marca completa lleva más idas y vueltas. Te doy un tiempo estimado apenas hablamos por WhatsApp.</p>
+        <p>Depende del proyecto: una etiqueta o pieza simple puede estar en 24–48hs, mientras que un rediseño de identidad de marca completo suele tomar alrededor de 7 días hábiles. Te doy un tiempo estimado apenas hablamos por WhatsApp.</p>
       </div>
     </div>
     <div class="faq-item">
       <button class="faq-question">
-        <span>¿Cuántas correcciones incluye?</span>
+        <span>¿Cuántas propuestas y correcciones incluye?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Trabajamos con rondas de ajustes hasta que el diseño te cierre del todo. Lo importante es que me digas con claridad qué cambiarías — cuanto más específico el feedback, más rápido llegamos al resultado final.</p>
+        <p>Para proyectos de identidad de marca te muestro 2 propuestas de diseño iniciales, y a partir de ahí trabajamos hasta 3 rondas de correcciones sobre la que elijas. Lo importante es que me digas con claridad qué cambiarías — cuanto más específico el feedback, más rápido llegamos al resultado final.</p>
       </div>
     </div>
     <div class="faq-item">
@@ -1118,16 +1172,16 @@
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Por transferencia o Mercado Pago. Coordinamos la forma de pago directo por WhatsApp una vez que definimos el alcance del proyecto.</p>
+        <p>Se abona el 50% al iniciar el proyecto y el 50% restante al finalizar, antes de la entrega de los archivos. Por transferencia o Mercado Pago — coordinamos el detalle por WhatsApp una vez definido el alcance del proyecto.</p>
       </div>
     </div>
     <div class="faq-item">
       <button class="faq-question">
-        <span>¿Entregás los archivos editables?</span>
+        <span>¿Qué formatos entregás?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p>Te entrego los archivos finales listos para imprenta o redes (PDF, PNG, JPG). Si necesitás el archivo editable (Canva, Illustrator, Photoshop), avisame antes para coordinarlo.</p>
+        <p>Depende de la pieza. Un logo, por ejemplo, se entrega en color y en versión en negro, en formato editable (Illustrator) más PNG y JPG, junto con un manual de marca y de uso. Etiquetas e invitaciones se entregan listas para imprenta o para redes en PDF, PNG o JPG.</p>
       </div>
     </div>
     <div class="faq-item">
